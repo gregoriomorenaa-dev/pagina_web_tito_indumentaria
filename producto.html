@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Detalle de producto — TITO INDUMENTARIA">
+<title>Producto — TITO INDUMENTARIA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+  --negro:#111111;
+  --negro-2:#1b1b1b;
+  --blanco:#ffffff;
+  --celeste:#d9f3ff;
+  --celeste-2:#bfeaff;
+  --gris:#f6f6f6;
+  --gris-2:#e7e7e7;
+  --texto:#111111;
+  --texto-suave:#6d6d6d;
+  --wpp:#25d366;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:"Inter",sans-serif;
+  color:var(--texto);
+  background:var(--gris);
+}
+
+a{color:inherit}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.header{
+  position:sticky;
+  top:0;
+  z-index:500;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid rgba(17,17,17,.10);
+  backdrop-filter:blur(10px);
+}
+
+.header-inner{
+  width:min(1320px,92%);
+  min-height:84px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.logo img{
+  width:190px;
+  max-height:72px;
+  object-fit:contain;
+  display:block;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.nav a{
+  position:relative;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:2px;
+  background:var(--negro);
+  transition:.2s;
+}
+
+.nav a:hover::after{width:100%}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.header-icon,
+.menu-btn{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:0;
+  background:var(--negro);
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.menu-btn{display:none}
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+.breadcrumb{
+  background:#fff;
+  border-bottom:1px solid var(--gris-2);
+}
+
+.breadcrumb-inner{
+  width:min(1320px,92%);
+  min-height:50px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  overflow-x:auto;
+  white-space:nowrap;
+  font-size:12px;
+  color:var(--texto-suave);
+}
+
+.breadcrumb a{
+  text-decoration:none;
+}
+
+.breadcrumb a:hover{
+  color:var(--negro);
+}
+
+.breadcrumb i{
+  font-size:9px;
+  color:#aaa;
+}
+
+.breadcrumb strong{
+  color:var(--negro);
+}
+
+/* =====================================================
+   PRODUCTO
+===================================================== */
+.product-page{
+  width:min(1320px,92%);
+  margin:auto;
+  padding:42px 0 76px;
+}
+
+.product-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+  gap:clamp(34px,5vw,70px);
+  align-items:start;
+}
+
+/* GALERÍA */
+.gallery{
+  position:sticky;
+  top:110px;
+}
+
+.gallery-main{
+  position:relative;
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--gris-2);
+  cursor:zoom-in;
+}
+
+.gallery-main::before{
+  content:"";
+  position:absolute;
+  width:62%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--celeste);
+  z-index:0;
+}
+
+.gallery-main img{
+  position:relative;
+  z-index:1;
+  width:88%;
+  height:88%;
+  object-fit:contain;
+  transition:transform .3s ease;
+}
+
+.gallery-main:hover img{
+  transform:scale(1.035);
+}
+
+.product-badge{
+  position:absolute;
+  top:16px;
+  left:16px;
+  z-index:3;
+  padding:7px 11px;
+  background:var(--negro);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.gallery-thumbs{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.thumb{
+  width:76px;
+  height:76px;
+  padding:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--gris-2);
+  background:#fff;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.thumb:hover,
+.thumb.active{
+  border-color:var(--negro);
+  box-shadow:0 0 0 3px var(--celeste);
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.share-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--gris-2);
+}
+
+.share-label{
+  margin-right:4px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--texto-suave);
+}
+
+.share-btn{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--gris-2);
+  background:#fff;
+  color:var(--negro);
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.share-btn:hover{
+  background:var(--negro);
+  color:#fff;
+  border-color:var(--negro);
+}
+
+/* INFO */
+.product-info{
+  min-width:0;
+}
+
+.product-category{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+  padding:7px 10px;
+  background:var(--celeste);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.product-title{
+  font-family:"Oswald",sans-serif;
+  font-size:clamp(46px,5vw,74px);
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+}
+
+.product-subtitle{
+  color:var(--texto-suave);
+  font-size:14px;
+  line-height:1.65;
+  margin-bottom:26px;
+}
+
+.price-box{
+  position:relative;
+  overflow:hidden;
+  background:var(--negro);
+  color:#fff;
+  padding:24px 26px;
+  margin-bottom:18px;
+}
+
+.price-box::after{
+  content:"TITO";
+  position:absolute;
+  right:-4px;
+  bottom:-24px;
+  font-family:"Oswald",sans-serif;
+  font-size:100px;
+  font-weight:700;
+  line-height:.8;
+  color:rgba(255,255,255,.04);
+  pointer-events:none;
+}
+
+.price-label{
+  position:relative;
+  z-index:1;
+  margin-bottom:5px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#aaa;
+}
+
+.price-value{
+  position:relative;
+  z-index:1;
+  font-family:"Oswald",sans-serif;
+  font-size:42px;
+  font-weight:700;
+  color:var(--celeste);
+  line-height:1;
+}
+
+.price-note{
+  position:relative;
+  z-index:1;
+  margin-top:7px;
+  font-size:11px;
+  color:#8f8f8f;
+}
+
+.cta-stack{
+  display:grid;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.btn-primary{
+  min-height:54px;
+  padding:0 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:var(--negro);
+  color:#fff;
+  border:1px solid var(--negro);
+  text-decoration:none;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:.2s;
+}
+
+.btn-primary:hover{
+  background:var(--celeste);
+  color:var(--negro);
+  transform:translateY(-2px);
+}
+
+.btn-secondary{
+  min-height:48px;
+  padding:0 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:#fff;
+  color:var(--negro);
+  border:1px solid var(--negro);
+  text-decoration:none;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:.2s;
+}
+
+.btn-secondary:hover{
+  background:var(--negro);
+  color:#fff;
+}
+
+.product-data{
+  background:#fff;
+  border:1px solid var(--gris-2);
+  padding:22px;
+}
+
+.product-data h3{
+  font-family:"Oswald",sans-serif;
+  font-size:20px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.data-row{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  border-bottom:1px solid #ededed;
+}
+
+.data-row:last-child{
+  border-bottom:0;
+}
+
+.data-key{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:var(--texto-suave);
+  font-size:12px;
+}
+
+.data-key i{
+  width:16px;
+  text-align:center;
+  color:var(--negro);
+}
+
+.data-value{
+  text-align:right;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* =====================================================
+   DESCRIPCIÓN / DETALLES
+===================================================== */
+.details-section{
+  background:#fff;
+  border-top:1px solid var(--gris-2);
+  border-bottom:1px solid var(--gris-2);
+}
+
+.details-inner{
+  width:min(1320px,92%);
+  margin:auto;
+  padding:62px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.55fr);
+  gap:clamp(40px,6vw,90px);
+}
+
+.section-kicker{
+  display:block;
+  margin-bottom:8px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--texto-suave);
+}
+
+.details-copy h2,
+.details-side h3,
+.related-head h2{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+}
+
+.details-copy h2{
+  font-size:clamp(34px,4vw,52px);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.details-copy p{
+  max-width:760px;
+  color:var(--texto-suave);
+  line-height:1.8;
+  font-size:14px;
+}
+
+.details-side{
+  background:var(--gris);
+  border-left:5px solid var(--celeste);
+  padding:26px;
+}
+
+.details-side h3{
+  font-size:24px;
+  margin-bottom:16px;
+}
+
+.spec-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  padding:11px 0;
+  border-bottom:1px solid #ddd;
+  font-size:12px;
+}
+
+.spec-row:last-child{border-bottom:0}
+
+.spec-row span:first-child{color:var(--texto-suave)}
+.spec-row span:last-child{font-weight:700;text-align:right}
+
+/* =====================================================
+   RELACIONADOS
+===================================================== */
+.related{
+  width:min(1320px,92%);
+  margin:auto;
+  padding:66px 0 90px;
+}
+
+.related-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:28px;
+}
+
+.related-head h2{
+  font-size:clamp(34px,4vw,52px);
+}
+
+.related-link{
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.related-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.related-card{
+  display:block;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--gris-2);
+  text-decoration:none;
+  transition:.25s;
+}
+
+.related-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--negro);
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
+}
+
+.related-img{
+  height:250px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at center, var(--celeste) 0 36%, transparent 37%),
+    #fafafa;
+}
+
+.related-img img{
+  width:86%;
+  height:88%;
+  object-fit:contain;
+}
+
+.related-body{
+  padding:18px;
+}
+
+.related-cat{
+  margin-bottom:7px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--texto-suave);
+}
+
+.related-body h3{
+  font-family:"Oswald",sans-serif;
+  font-size:25px;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:12px;
+}
+
+.related-body span{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer{
+  background:var(--negro);
+  color:#fff;
+  padding:58px 5vw 24px;
+}
+
+.footer-grid{
+  width:min(1320px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:50px;
+}
+
+.footer-logo img{
+  width:180px;
+  max-height:80px;
+  object-fit:contain;
+  background:#fff;
+  margin-bottom:16px;
+}
+
+.footer h3{
+  font-family:"Oswald",sans-serif;
+  font-size:18px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.footer p,
+.footer a{
+  color:rgba(255,255,255,.65);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.footer a{
+  display:block;
+  text-decoration:none;
+  margin-bottom:8px;
+}
+
+.footer a:hover{color:var(--celeste)}
+
+.footer-bottom{
+  width:min(1320px,100%);
+  margin:36px auto 0;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.10);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:rgba(255,255,255,.45);
+  font-size:10px;
+}
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  background:rgba(0,0,0,.90);
+}
+
+.lightbox.open{display:flex}
+
+.lightbox img{
+  max-width:92vw;
+  max-height:90vh;
+  object-fit:contain;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:22px;
+  right:24px;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,255,255,.35);
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media(max-width:980px){
+  .product-layout{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    position:static;
+  }
+
+  .details-inner{
+    grid-template-columns:1fr;
+  }
+
+  .related-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:860px){
+  .header-inner{min-height:72px}
+
+  .nav{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    flex-direction:column;
+    align-items:stretch;
+    background:#fff;
+    padding:14px 18px 20px;
+    border-top:1px solid #eee;
+    box-shadow:0 18px 30px rgba(0,0,0,.12);
+  }
+
+  .nav.active{display:flex}
+  .nav a{padding:10px 2px}
+  .menu-btn{display:grid}
+  .logo img{width:155px}
+}
+
+@media(max-width:560px){
+  .header-icon{display:none}
+
+  .product-page{
+    width:calc(100% - 28px);
+    padding-top:24px;
+  }
+
+  .gallery-main{
+    aspect-ratio:4/5;
+  }
+
+  .gallery-main img{
+    width:94%;
+    height:94%;
+  }
+
+  .product-title{
+    font-size:46px;
+  }
+
+  .product-layout{
+    gap:28px;
+  }
+
+  .details-inner,
+  .related{
+    width:calc(100% - 28px);
+  }
+
+  .related-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .related-grid{
+    grid-template-columns:1fr;
+  }
+
+  .related-img{
+    height:260px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="./src/logotito2.png" alt="TITO INDUMENTARIA">
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#categorias">Categorías</a>
+      <a href="index.html#talles">Talles</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-icon" href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a class="header-icon" href="https://wa.me/5493492399509" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">Inicio</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <a href="catalogo.html">Catálogo</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <a href="#" id="bread-cat">Categoría</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <strong id="bread-name">Producto</strong>
+  </div>
+</div>
+
+<main class="product-page">
+  <div class="product-layout">
+
+    <section class="gallery" aria-label="Galería del producto">
+      <div class="gallery-main" id="galleryMain">
+        <span class="product-badge" id="productBadge">Disponible</span>
+        <img id="mainImage" src="" alt="Producto">
+      </div>
+
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+
+      <div class="share-row">
+        <span class="share-label">Compartir</span>
+
+        <a id="shareWhatsapp" class="share-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Compartir por WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <button class="share-btn" id="copyLink" type="button" aria-label="Copiar enlace">
+          <i class="fa-solid fa-link"></i>
+        </button>
+      </div>
+    </section>
+
+    <section class="product-info">
+      <div class="product-category" id="productCategory">Categoría</div>
+
+      <h1 class="product-title" id="productTitle">Cargando...</h1>
+
+      <p class="product-subtitle" id="productSubtitle">
+        Cargando información del producto...
+      </p>
+
+      <div class="price-box">
+        <div class="price-label">Precio</div>
+        <div class="price-value" id="productPrice">Consultar</div>
+        <div class="price-note" id="priceNote">Consultá disponibilidad actual.</div>
+      </div>
+
+      <div class="cta-stack">
+        <a id="productWhatsapp" class="btn-primary" href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i>
+          Consultar por WhatsApp
+        </a>
+
+        <a class="btn-secondary" href="index.html#talles">
+          <i class="fa-solid fa-ruler"></i>
+          Ver guía de talles
+        </a>
+      </div>
+
+      <div class="product-data">
+        <h3>Información del producto</h3>
+
+        <div class="data-row">
+          <div class="data-key"><i class="fa-solid fa-shirt"></i> Categoría</div>
+          <div class="data-value" id="dataCategory">—</div>
+        </div>
+
+        <div class="data-row">
+          <div class="data-key"><i class="fa-solid fa-ruler-combined"></i> Talles</div>
+          <div class="data-value" id="dataSizes">—</div>
+        </div>
+
+        <div class="data-row">
+          <div class="data-key"><i class="fa-solid fa-palette"></i> Colores</div>
+          <div class="data-value" id="dataColors">—</div>
+        </div>
+
+        <div class="data-row">
+          <div class="data-key"><i class="fa-solid fa-tag"></i> Línea / estilo</div>
+          <div class="data-value" id="dataStyle">—</div>
+        </div>
+
+        <div class="data-row">
+          <div class="data-key"><i class="fa-solid fa-box-open"></i> Disponibilidad</div>
+          <div class="data-value" id="dataStock">—</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="details-section">
+  <div class="details-inner">
+    <div class="details-copy">
+      <span class="section-kicker">DETALLE</span>
+      <h2>Sobre este producto</h2>
+      <p id="productDescription">Cargando descripción...</p>
+    </div>
+
+    <aside class="details-side">
+      <h3>Detalles</h3>
+
+      <div class="spec-row">
+        <span>Producto</span>
+        <span id="specName">—</span>
+      </div>
+
+      <div class="spec-row">
+        <span>Categoría</span>
+        <span id="specCategory">—</span>
+      </div>
+
+      <div class="spec-row">
+        <span>Talles</span>
+        <span id="specSizes">—</span>
+      </div>
+
+      <div class="spec-row">
+        <span>Colores</span>
+        <span id="specColors">—</span>
+      </div>
+
+      <div class="spec-row">
+        <span>Material</span>
+        <span id="specMaterial">—</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="related" id="relatedSection">
+  <div class="related-head">
+    <div>
+      <span class="section-kicker">SEGUÍ MIRANDO</span>
+      <h2>También te puede interesar</h2>
+    </div>
+
+    <a href="catalogo.html" class="related-link">
+      Ver catálogo completo
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div class="related-grid" id="relatedGrid"></div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="./src/logotito2.png" alt="TITO INDUMENTARIA">
+      </div>
+      <p>Remeras, camisetas, shorts, gorras y accesorios seleccionados para distintos estilos.</p>
+    </div>
+
+    <div>
+      <h3>Navegación</h3>
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#talles">Guía de talles</a>
+      <a href="index.html#nosotros">Nosotros</a>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <a href="https://wa.me/5493492399509" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i> +54 9 3492 39-9509
+      </a>
+      <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram"></i> @tito_indumentarias
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 TITO INDUMENTARIA</span>
+    <span>Desarrollado por MANDARINA SOFTWARE</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar imagen">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <img id="lightboxImage" src="" alt="">
+</div>
+
+<script type="module">
+import { db } from "./js/firebase-config.js";
+
+import {
+  doc,
+  getDoc,
+  getDocs,
+  collection
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const WHATSAPP = "5493492399509";
+
+const params = new URLSearchParams(window.location.search);
+const productoId = params.get("id");
+
+let producto = null;
+let imagenActual = "";
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function texto(valor, fallback = "—"){
+  const limpio = String(valor ?? "").trim();
+  return limpio || fallback;
+}
+
+function listaATexto(valor, fallback = "Consultar"){
+  if(Array.isArray(valor)){
+    const items = valor.map(v => String(v).trim()).filter(Boolean);
+    return items.length ? items.join(", ") : fallback;
+  }
+
+  return texto(valor, fallback);
+}
+
+function escaparHTML(valor=""){
+  return String(valor)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function normalizarCategoria(valor=""){
+  const raw = String(valor)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .toLowerCase()
+    .trim();
+
+  const aliases = {
+    remera:"remeras",
+    remeras:"remeras",
+    camiseta:"camisetas",
+    camisetas:"camisetas",
+    short:"shorts",
+    shorts:"shorts",
+    gorra:"gorras",
+    gorras:"gorras",
+    accesorio:"accesorios",
+    accesorios:"accesorios"
+  };
+
+  return aliases[raw] || raw;
+}
+
+function nombreCategoria(cat){
+  const nombres = {
+    remeras:"Remeras",
+    camisetas:"Camisetas",
+    shorts:"Shorts",
+    gorras:"Gorras",
+    accesorios:"Accesorios"
+  };
+
+  return nombres[normalizarCategoria(cat)] || texto(cat, "Producto");
+}
+
+function productoActivo(p){
+  if(typeof p.Activo === "boolean") return p.Activo;
+  if(typeof p.activo === "boolean") return p.activo;
+
+  const estado = String(p.Estado || p.estado || "").toLowerCase();
+  return estado !== "inactivo";
+}
+
+function obtenerImagenes(p){
+  const listas = [
+    p.Imagenes,
+    p.imagenes,
+    p.Fotos,
+    p.fotos
+  ];
+
+  for(const lista of listas){
+    if(Array.isArray(lista) && lista.filter(Boolean).length){
+      return lista.filter(Boolean);
+    }
+  }
+
+  const principal = p.Imagen ?? p.imagen ?? "";
+  return principal ? [principal] : [];
+}
+
+function formatearPrecio(p){
+  const mostrar = (p.MostrarPrecio ?? p.mostrarPrecio ?? true) !== false;
+  const valor = Number(p.Precio ?? p.precio);
+
+  if(!mostrar || !Number.isFinite(valor) || valor <= 0){
+    return "Consultar";
+  }
+
+  return "$ " + valor.toLocaleString("es-AR");
+}
+
+function obtenerDisponibilidad(p){
+  const disp = texto(
+    p.Disponibilidad ?? p.disponibilidad,
+    ""
+  );
+
+  const stockRaw = p.Stock ?? p.stock;
+  const stock =
+    stockRaw === null ||
+    stockRaw === undefined ||
+    stockRaw === ""
+      ? null
+      : Number(stockRaw);
+
+  if(Number.isFinite(stock) && stock <= 0){
+    return "Sin stock";
+  }
+
+  if(disp){
+    return disp;
+  }
+
+  if(Number.isFinite(stock)){
+    return `${stock} unidad${stock === 1 ? "" : "es"}`;
+  }
+
+  return "Consultar";
+}
+
+function subtituloProducto(p){
+  const estilo = texto(p.Estilo ?? p.estilo, "");
+  if(estilo) return estilo;
+
+  return `${nombreCategoria(p.Categoria ?? p.Categoría ?? p.categoria)} de TITO INDUMENTARIA`;
+}
+
+function mapearProducto(id, p){
+  const categoria = normalizarCategoria(
+    p.Categoria ??
+    p.Categoría ??
+    p.categoria ??
+    ""
+  );
+
+  const imagenes = obtenerImagenes(p);
+
+  return {
+    id,
+    nombre: texto(p.Nombre ?? p.nombre, "Producto"),
+    categoria,
+    categoriaNombre: nombreCategoria(categoria),
+    subtitulo: subtituloProducto(p),
+    descripcion: texto(
+      p.Descripcion ??
+      p.Descripción ??
+      p.descripcion,
+      "Sin descripción disponible."
+    ),
+    precio: formatearPrecio(p),
+    imagenes,
+    badge: texto(
+      p.Badge ??
+      p.badge ??
+      ((p.Destacado ?? p.destacado) ? "Destacado" : ""),
+      ""
+    ),
+    talles: listaATexto(p.Talles ?? p.talles),
+    colores: listaATexto(p.Colores ?? p.colores),
+    estilo: texto(p.Estilo ?? p.estilo, "Consultar"),
+    material: texto(p.Material ?? p.material, "Consultar"),
+    disponibilidad: obtenerDisponibilidad(p),
+    activo: productoActivo(p)
+  };
+}
+
+/* ============================================================
+   CARGA PRINCIPAL DESDE FIRESTORE
+============================================================ */
+async function cargarProducto(){
+  if(!productoId){
+    window.location.href = "catalogo.html";
+    return;
+  }
+
+  try{
+    const snap = await getDoc(doc(db, "Productos", productoId));
+
+    if(!snap.exists()){
+      window.location.href = "catalogo.html";
+      return;
+    }
+
+    producto = mapearProducto(snap.id, snap.data());
+
+    if(!producto.activo){
+      window.location.href = "catalogo.html";
+      return;
+    }
+
+    imagenActual = producto.imagenes[0] || "";
+
+    document.title = `${producto.nombre} — TITO INDUMENTARIA`;
+
+    document.getElementById("bread-cat").textContent = producto.categoriaNombre;
+    document.getElementById("bread-cat").href =
+      `catalogo.html?cat=${encodeURIComponent(producto.categoria)}`;
+
+    document.getElementById("bread-name").textContent = producto.nombre;
+
+    document.getElementById("productCategory").textContent = producto.categoriaNombre;
+    document.getElementById("productTitle").textContent = producto.nombre;
+    document.getElementById("productSubtitle").textContent = producto.subtitulo;
+
+    const badge = document.getElementById("productBadge");
+    badge.textContent = producto.badge || producto.disponibilidad;
+
+    document.getElementById("productPrice").textContent = producto.precio;
+
+    document.getElementById("priceNote").textContent =
+      producto.precio === "Consultar"
+        ? "Consultá el precio actual."
+        : "Precio sujeto a disponibilidad.";
+
+    document.getElementById("dataCategory").textContent = producto.categoriaNombre;
+    document.getElementById("dataSizes").textContent = producto.talles;
+    document.getElementById("dataColors").textContent = producto.colores;
+    document.getElementById("dataStyle").textContent = producto.estilo;
+    document.getElementById("dataStock").textContent = producto.disponibilidad;
+
+    document.getElementById("productDescription").textContent = producto.descripcion;
+
+    document.getElementById("specName").textContent = producto.nombre;
+    document.getElementById("specCategory").textContent = producto.categoriaNombre;
+    document.getElementById("specSizes").textContent = producto.talles;
+    document.getElementById("specColors").textContent = producto.colores;
+    document.getElementById("specMaterial").textContent = producto.material;
+
+    cargarGaleria();
+    configurarWhatsApp();
+    configurarCompartir();
+    await cargarRelacionados();
+
+  }catch(error){
+    console.error("Error cargando producto desde Firestore:", error);
+    window.location.href = "catalogo.html";
+  }
+}
+
+/* ============================================================
+   GALERÍA
+============================================================ */
+function cargarGaleria(){
+  const main = document.getElementById("mainImage");
+  const thumbs = document.getElementById("galleryThumbs");
+
+  if(!producto.imagenes.length){
+    main.removeAttribute("src");
+    main.alt = "Producto sin imagen";
+    thumbs.innerHTML = "";
+    return;
+  }
+
+  main.src = imagenActual;
+  main.alt = producto.nombre;
+
+  if(producto.imagenes.length <= 1){
+    thumbs.innerHTML = "";
+    return;
+  }
+
+  thumbs.innerHTML = producto.imagenes.map((src,index) => `
+    <button
+      class="thumb ${index === 0 ? "active" : ""}"
+      type="button"
+      data-img="${escaparHTML(src)}"
+    >
+      <img
+        src="${escaparHTML(src)}"
+        alt="${escaparHTML(producto.nombre)} - imagen ${index + 1}"
+      >
+    </button>
+  `).join("");
+
+  thumbs.querySelectorAll(".thumb").forEach(btn => {
+    btn.addEventListener("click",() => {
+      imagenActual = btn.dataset.img;
+      main.src = imagenActual;
+
+      thumbs
+        .querySelectorAll(".thumb")
+        .forEach(t => t.classList.remove("active"));
+
+      btn.classList.add("active");
+    });
+  });
+}
+
+/* ============================================================
+   WHATSAPP / COMPARTIR
+============================================================ */
+function configurarWhatsApp(){
+  const mensaje =
+    `Hola TITO, quiero consultar por ${producto.nombre}. ` +
+    `¿Me cuentan disponibilidad, talles y precio? ` +
+    `Link: ${window.location.href}`;
+
+  document.getElementById("productWhatsapp").href =
+    `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+}
+
+function configurarCompartir(){
+  document.getElementById("shareWhatsapp").href =
+    `https://wa.me/?text=${encodeURIComponent(
+      producto.nombre +
+      " — TITO INDUMENTARIA\n" +
+      window.location.href
+    )}`;
+}
+
+/* ============================================================
+   PRODUCTOS RELACIONADOS DESDE FIRESTORE
+============================================================ */
+async function cargarRelacionados(){
+  const section = document.getElementById("relatedSection");
+  const grid = document.getElementById("relatedGrid");
+
+  try{
+    const snap = await getDocs(collection(db, "Productos"));
+
+    const relacionados = snap.docs
+      .filter(d => d.id !== producto.id)
+      .map(d => mapearProducto(d.id, d.data()))
+      .filter(p =>
+        p.activo &&
+        p.categoria === producto.categoria
+      )
+      .slice(0,3);
+
+    if(!relacionados.length){
+      section.style.display = "none";
+      return;
+    }
+
+    section.style.display = "";
+
+    grid.innerHTML = relacionados.map(p => `
+      <a
+        class="related-card"
+        href="producto.html?id=${encodeURIComponent(p.id)}"
+      >
+        <div class="related-img">
+          ${
+            p.imagenes[0]
+              ? `<img
+                  src="${escaparHTML(p.imagenes[0])}"
+                  alt="${escaparHTML(p.nombre)}"
+                >`
+              : `<i class="fa-solid fa-shirt" style="font-size:54px;color:#aaa;"></i>`
+          }
+        </div>
+
+        <div class="related-body">
+          <div class="related-cat">
+            ${escaparHTML(p.categoriaNombre)}
+          </div>
+
+          <h3>${escaparHTML(p.nombre)}</h3>
+
+          <span>
+            Ver producto
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </div>
+      </a>
+    `).join("");
+
+  }catch(error){
+    console.error("Error cargando productos relacionados:", error);
+    section.style.display = "none";
+  }
+}
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+const galleryMain = document.getElementById("galleryMain");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+
+galleryMain.addEventListener("click",() => {
+  if(!imagenActual) return;
+
+  lightboxImage.src = imagenActual;
+  lightboxImage.alt = producto?.nombre || "Producto";
+  lightbox.classList.add("open");
+});
+
+function cerrarLightbox(){
+  lightbox.classList.remove("open");
+}
+
+lightboxClose.addEventListener("click",cerrarLightbox);
+
+lightbox.addEventListener("click",event => {
+  if(event.target === lightbox){
+    cerrarLightbox();
+  }
+});
+
+document.addEventListener("keydown",event => {
+  if(event.key === "Escape"){
+    cerrarLightbox();
+  }
+});
+
+/* ============================================================
+   COPIAR LINK
+============================================================ */
+document.getElementById("copyLink").addEventListener("click",async () => {
+  try{
+    await navigator.clipboard.writeText(window.location.href);
+
+    const btn = document.getElementById("copyLink");
+    const original = btn.innerHTML;
+
+    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+
+    setTimeout(() => {
+      btn.innerHTML = original;
+    },1200);
+
+  }catch(error){
+    console.error("No se pudo copiar el enlace:", error);
+  }
+});
+
+/* ============================================================
+   MENÚ MÓVIL
+============================================================ */
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+const menuIcon = menuBtn.querySelector("i");
+
+menuBtn.addEventListener("click",() => {
+  const abierto = nav.classList.toggle("active");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    abierto ? "true" : "false"
+  );
+
+  menuIcon.classList.toggle("fa-bars",!abierto);
+  menuIcon.classList.toggle("fa-xmark",abierto);
+});
+
+nav.querySelectorAll("a").forEach(a => {
+  a.addEventListener("click",() => {
+    nav.classList.remove("active");
+    menuBtn.setAttribute("aria-expanded","false");
+    menuIcon.classList.add("fa-bars");
+    menuIcon.classList.remove("fa-xmark");
+  });
+});
+
+cargarProducto();
+</script>
+
+</body>
+</html>

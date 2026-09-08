@@ -1,0 +1,3141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+        name="description"
+        content="TITO INDUMENTARIA - Remeras, shorts, gorras y accesorios. Consultá modelos, talles, precios y disponibilidad."
+    />
+    <title>TITO INDUMENTARIA</title>
+
+    <link rel="stylesheet" href="css/estilos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- =====================================================
+         REFINAMIENTO UX/UI: ESPACIADOS + LIFESTYLE + FAQ
+    ====================================================== -->
+    <style>
+        :root {
+            --tito-section-space: clamp(64px, 8vw, 104px);
+            --tito-section-space-mobile: 56px;
+            --tito-content-gap: 28px;
+        }
+
+        /* -----------------------------------------------------
+           7. ESPACIADOS CONSISTENTES
+        ----------------------------------------------------- */
+        .categories-section,
+        .featured-section,
+        .about-section,
+        .size-section,
+        .faq-section {
+            padding-top: var(--tito-section-space);
+            padding-bottom: var(--tito-section-space);
+        }
+
+        .section-heading,
+        .faq-title {
+            margin-bottom: clamp(30px, 4vw, 46px);
+        }
+
+        .section-heading h2,
+        .faq-title h2 {
+            margin-top: 8px;
+            margin-bottom: 14px;
+        }
+
+        .section-heading p,
+        .faq-title p {
+            margin-bottom: 0;
+        }
+
+        .categories-grid,
+        .featured-grid {
+            gap: clamp(18px, 2.5vw, 28px);
+        }
+
+        .brand-banner {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .quick-links {
+            margin-top: clamp(24px, 3vw, 40px);
+            margin-bottom: 0;
+        }
+
+        .about-container {
+            gap: clamp(34px, 5vw, 72px);
+        }
+
+        .size-image-container {
+            margin-top: 30px;
+        }
+
+        .size-help {
+            margin-top: 22px;
+        }
+
+        /* -----------------------------------------------------
+           9. BLOQUE LIFESTYLE / EDITORIAL
+        ----------------------------------------------------- */
+        .lifestyle-section {
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(520px, 72vw, 760px);
+            display: flex;
+            align-items: center;
+            background: #111;
+            isolation: isolate;
+        }
+
+        .lifestyle-media,
+        .lifestyle-media::after {
+            position: absolute;
+            inset: 0;
+        }
+
+        .lifestyle-media {
+            z-index: -2;
+        }
+
+        .lifestyle-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center 38%;
+            filter: saturate(.88) contrast(1.04);
+        }
+
+        .lifestyle-media::after {
+            content: "";
+            z-index: 1;
+            background:
+                linear-gradient(180deg, rgba(0,0,0,.08) 20%, rgba(0,0,0,.3) 58%, rgba(0,0,0,.82) 100%);
+        }
+
+        .lifestyle-content {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: clamp(70px, 10vw, 120px) 0 clamp(54px, 7vw, 88px);
+            color: #fff;
+        }
+
+        .lifestyle-kicker {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+       .lifestyle-content h2 {
+        max-width: 760px;
+        margin: 0 0 18px;
+        font-family: "Oswald", sans-serif;
+        font-size: clamp(46px, 7vw, 92px);
+        line-height: .94;
+        letter-spacing: -.02em;
+        text-transform: uppercase;
+
+         color: white;
+        -webkit-text-stroke: 1.5px #000;
+         text-shadow:
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000;
+        }
+
+        .lifestyle-content p {
+         max-width: 560px;
+         margin: 0 0 28px;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(15px, 1.6vw, 18px);
+        line-height: 1.65;
+        color: #fff;
+
+        background: rgba(0, 0, 0, 0.55);
+        padding: 10px 14px;
+        border-radius: 6px;
+        display: inline-block;
+
+         text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+    }
+
+        
+
+        .lifestyle-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 48px;
+            padding: 0 20px;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .lifestyle-cta:hover {
+            transform: translateY(-2px);
+            background: #f2f2f2;
+        }
+
+        /* -----------------------------------------------------
+           8. FAQ: MÁS JERARQUÍA Y MEJOR TÁCTIL EN MÓVIL
+        ----------------------------------------------------- */
+        .faq-layout {
+            gap: clamp(38px, 6vw, 88px);
+        }
+
+        .faq-container {
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(17,17,17,.14);
+            background: #fff;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(17,17,17,.3);
+        }
+
+        .faq-item[open] {
+            border-color: #111;
+            box-shadow: 0 10px 28px rgba(0,0,0,.06);
+        }
+
+        .faq-question {
+            position: relative;
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            padding: 20px 58px 20px 22px;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question::after {
+            content: "+";
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 1;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .faq-item[open] .faq-question::after {
+            content: "−";
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 58px 22px 22px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            max-width: 680px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(17,17,17,.72);
+        }
+
+        @media (max-width: 860px) {
+            .categories-section,
+            .featured-section,
+            .about-section,
+            .size-section,
+            .faq-section {
+                padding-top: var(--tito-section-space-mobile);
+                padding-bottom: var(--tito-section-space-mobile);
+            }
+
+            .section-heading,
+            .faq-title {
+                margin-bottom: 28px;
+            }
+
+            .categories-grid,
+            .featured-grid {
+                gap: 16px;
+            }
+
+            .lifestyle-section {
+                min-height: 540px;
+            }
+
+            .lifestyle-content {
+                width: min(100% - 32px, 1180px);
+                padding-bottom: 48px;
+            }
+
+            .lifestyle-content h2 {
+                max-width: 520px;
+                font-size: clamp(44px, 14vw, 68px);
+            }
+
+            .lifestyle-content p {
+                max-width: 440px;
+                font-size: 15px;
+            }
+
+            .faq-layout {
+                gap: 26px;
+            }
+
+            .faq-title p {
+                max-width: 440px;
+            }
+
+            .faq-question {
+                min-height: 72px;
+                padding: 20px 56px 20px 18px;
+                font-size: 15px;
+            }
+
+            .faq-question::after {
+                right: 18px;
+            }
+
+            .faq-answer {
+                padding: 0 18px 20px;
+            }
+
+            .faq-answer p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            :root {
+                --tito-section-space-mobile: 50px;
+            }
+
+            .lifestyle-section {
+                min-height: 500px;
+            }
+
+            .lifestyle-media img {
+                object-position: 54% center;
+            }
+
+            .lifestyle-content {
+                width: calc(100% - 28px);
+                padding-bottom: 38px;
+            }
+
+            .lifestyle-content h2 {
+                font-size: clamp(40px, 15vw, 58px);
+            }
+
+            .lifestyle-cta {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    
+        /* -----------------------------------------------------
+           4. CTA "VER CATÁLOGO"
+        ----------------------------------------------------- */
+        .catalog-cta-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 34px;
+        }
+
+        .catalog-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 52px;
+            padding: 0 24px;
+            border: 1px solid #111;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: transform .2s ease, background .2s ease, color .2s ease;
+        }
+
+        .catalog-cta:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            color: #111;
+        }
+
+        /* -----------------------------------------------------
+           5. CTA WHATSAPP MEJORADO
+        ----------------------------------------------------- */
+        .contact-cta {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: clamp(24px, 4vw, 56px);
+            padding: clamp(46px, 6vw, 76px) clamp(22px, 5vw, 72px);
+        }
+
+        .contact-cta::before {
+            content: "TITO";
+            position: absolute;
+            right: -10px;
+            bottom: -38px;
+            font-family: "Oswald", sans-serif;
+            font-size: clamp(110px, 18vw, 260px);
+            font-weight: 700;
+            line-height: .8;
+            opacity: .05;
+            pointer-events: none;
+        }
+
+        .cta-icon {
+            width: clamp(64px, 8vw, 92px);
+            height: clamp(64px, 8vw, 92px);
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            font-size: clamp(28px, 4vw, 42px);
+            flex: 0 0 auto;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content span {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .cta-content h2 {
+            margin: 0 0 12px;
+            font-size: clamp(34px, 5vw, 64px);
+            line-height: .96;
+        }
+
+        .cta-content p {
+            margin: 0;
+            max-width: 560px;
+            line-height: 1.65;
+        }
+
+        .cta-button {
+            position: relative;
+            z-index: 1;
+            min-width: 260px;
+            min-height: 58px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 24px;
+            border: 2px solid #111;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,.14);
+            background: transparent;
+            color: #111;
+        }
+
+        /* -----------------------------------------------------
+           6. MODAL GUÍA DE TALLES
+        ----------------------------------------------------- */
+        .size-image-container {
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .size-image-container::after {
+            content: "AMPLIAR GUÍA";
+            position: absolute;
+            right: 14px;
+            bottom: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 0 12px;
+            background: rgba(17,17,17,.88);
+            color: #fff;
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .size-image {
+            transition: transform .2s ease, filter .2s ease;
+        }
+
+        .size-image-container:hover .size-image {
+            transform: scale(1.01);
+            filter: brightness(.98);
+        }
+
+        .size-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0,0,0,.82);
+            backdrop-filter: blur(4px);
+        }
+
+        .size-modal.active {
+            display: flex;
+        }
+
+        .size-modal-dialog {
+            position: relative;
+            width: min(960px, 100%);
+            max-height: 90vh;
+            padding: 18px;
+            background: #fff;
+            box-shadow: 0 24px 70px rgba(0,0,0,.35);
+        }
+
+        .size-modal-dialog img {
+            width: 100%;
+            max-height: calc(90vh - 36px);
+            display: block;
+            object-fit: contain;
+        }
+
+        .size-modal-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,.22);
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 860px) {
+            .catalog-cta-wrap {
+                margin-top: 26px;
+            }
+
+            .catalog-cta {
+                width: 100%;
+            }
+
+            .contact-cta {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .cta-icon {
+                width: 66px;
+                height: 66px;
+                font-size: 30px;
+            }
+
+            .cta-button {
+                width: 100%;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .contact-cta {
+                padding: 42px 18px;
+                gap: 22px;
+            }
+
+            .size-modal {
+                padding: 14px;
+            }
+
+            .size-modal-dialog {
+                padding: 10px;
+            }
+
+            .size-modal-close {
+                top: -10px;
+                right: -8px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+    
+        /* GUÍA DE TALLES: PREVIEW MÁS CHICA + HIPERVÍNCULO */
+        .size-image-container.size-image-small {
+            max-width: 520px;
+            margin: 30px auto 0;
+            cursor: default;
+        }
+
+        .size-image-container.size-image-small::after {
+            display: none;
+        }
+
+        .size-image-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .size-image-small .size-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        .size-image-link:hover .size-image {
+            transform: scale(1.01);
+            opacity: .96;
+        }
+
+        .size-image-link-label {
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 14px;
+            border: 1px solid #111;
+            background: #fff;
+            color: #111;
+            font-family: "Inter", sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 520px) {
+            .size-image-container.size-image-small {
+                max-width: 300px;
+            }
+
+            .size-image-small .size-image {
+                max-height: 210px;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           1. HERO MÁS POTENTE
+        ----------------------------------------------------- */
+        .hero {
+            min-height: clamp(620px, 82vh, 820px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+            align-items: center;
+            gap: clamp(30px, 5vw, 70px);
+            padding-top: clamp(70px, 9vw, 120px);
+            padding-bottom: clamp(70px, 9vw, 120px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(74px, 10vw, 150px);
+            line-height: .84;
+            letter-spacing: -.04em;
+            margin-bottom: 8px;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(30px, 4.2vw, 64px);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .hero-categories {
+            margin-bottom: 28px;
+            font-size: clamp(12px, 1.2vw, 15px);
+            letter-spacing: .14em;
+        }
+
+        .hero-buttons {
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons a {
+            min-height: 52px;
+        }
+
+        .hero-visual {
+            min-height: 430px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo-box {
+            width: min(100%, 520px);
+        }
+
+        .hero-logo-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero-background-text {
+            opacity: .04;
+        }
+
+        /* -----------------------------------------------------
+           2. DESTACADOS CON MÁS PROTAGONISMO VISUAL
+        ----------------------------------------------------- */
+        .featured-grid {
+            align-items: stretch;
+        }
+
+        .featured-card {
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: clamp(26px, 3vw, 34px);
+        }
+
+        .featured-icon {
+            width: 76px;
+            height: 76px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 24px;
+            font-size: 34px;
+        }
+
+        .featured-card > span {
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+        .featured-card h3 {
+            margin: 0 0 14px;
+            font-size: clamp(24px, 2.4vw, 34px);
+            line-height: 1.05;
+        }
+
+        .featured-card p {
+            margin-bottom: 26px;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .featured-card a {
+            margin-top: auto;
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        /* -----------------------------------------------------
+           3. TIPOGRAFÍA MÓVIL MÁS LEGIBLE
+        ----------------------------------------------------- */
+        @media (max-width: 860px) {
+            .hero {
+                min-height: auto;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding-top: 58px;
+                padding-bottom: 58px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(64px, 20vw, 108px);
+            }
+
+            .hero-content h2 {
+                font-size: clamp(28px, 9vw, 46px);
+            }
+
+            .hero-categories {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .hero-buttons {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 300px;
+            }
+
+            .hero-logo-box {
+                width: min(86%, 420px);
+            }
+
+            .section-heading p,
+            .category-info p,
+            .featured-card p,
+            .about-content p,
+            .size-help,
+            .faq-answer p,
+            .cta-content p,
+            .footer p,
+            .footer a {
+                font-size: 15px;
+                line-height: 1.65;
+            }
+
+            .category-info h3 {
+                font-size: 26px;
+            }
+
+            .featured-card {
+                min-height: 320px;
+                padding: 24px 20px;
+            }
+
+            .featured-card h3 {
+                font-size: 28px;
+            }
+
+            .featured-icon {
+                width: 68px;
+                height: 68px;
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero {
+                padding-top: 46px;
+                padding-bottom: 46px;
+            }
+
+            .hero-visual {
+                min-height: 240px;
+            }
+
+            .section-heading p,
+            .category-info p,
+            .featured-card p,
+            .about-content p,
+            .faq-answer p,
+            .cta-content p {
+                font-size: 15px;
+            }
+
+            .section-kicker {
+                font-size: 11px;
+            }
+
+            .featured-card h3 {
+                font-size: 26px;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           AJUSTE HERO: TEXTO + BOTONES + IMAGEN
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero {
+                grid-template-columns: minmax(520px, .95fr) minmax(520px, 1.05fr);
+                gap: clamp(40px, 5vw, 86px);
+            }
+
+            .hero-content {
+                max-width: 760px;
+            }
+
+            .hero-categories {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+                margin-bottom: 32px;
+            }
+
+            .hero-buttons {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: nowrap;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                min-height: 54px;
+                padding: 0 26px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                white-space: nowrap;
+                margin: 0;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+            }
+
+            .hero-circle {
+                width: clamp(470px, 34vw, 610px);
+                height: clamp(470px, 34vw, 610px);
+            }
+
+            .hero-logo-box {
+                width: min(92%, 650px);
+            }
+
+            .hero-logo-box img {
+                width: 100%;
+                max-width: none;
+                transform: scale(1.18);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-categories {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px 12px;
+            }
+
+            .hero-logo-box {
+                width: min(92%, 460px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.08);
+                transform-origin: center;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           AJUSTE HERO: CÍRCULO MÁS A LA DERECHA Y DETRÁS DE LA ROPA
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero-visual {
+                position: relative;
+                min-height: 500px;
+                overflow: visible;
+            }
+
+            .hero-circle {
+                position: absolute;
+                right: -8%;
+                left: auto;
+                top: 50%;
+                transform: translateY(-50%);
+                width: clamp(390px, 28vw, 500px);
+                height: clamp(390px, 28vw, 500px);
+                z-index: 0;
+            }
+
+            .hero-logo-box {
+                position: relative;
+                z-index: 2;
+                width: min(96%, 690px);
+                margin-left: -3%;
+            }
+
+            .hero-logo-box img {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                max-width: none;
+                transform: scale(1.2);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-visual {
+                position: relative;
+                overflow: visible;
+            }
+
+            .hero-circle {
+                position: absolute;
+                right: -18%;
+                left: auto;
+                top: 50%;
+                transform: translateY(-50%);
+                width: min(72vw, 340px);
+                height: min(72vw, 340px);
+                z-index: 0;
+            }
+
+            .hero-logo-box {
+                position: relative;
+                z-index: 2;
+                width: min(94%, 470px);
+            }
+
+            .hero-logo-box img {
+                position: relative;
+                z-index: 2;
+                transform: scale(1.1);
+                transform-origin: center;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           CORRECCIÓN HERO: CÍRCULO REALMENTE A LA DERECHA + ROPA MÁS GRANDE
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero-visual {
+                position: relative;
+                min-height: 540px;
+                overflow: visible;
+            }
+
+            .hero-circle {
+                position: absolute;
+                top: 50%;
+                left: 58%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: clamp(360px, 24vw, 450px);
+                height: clamp(360px, 24vw, 450px);
+                z-index: 0;
+            }
+
+            .hero-logo-box {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: min(100%, 760px);
+                margin: 0;
+            }
+
+            .hero-logo-box img {
+                display: block;
+                width: 100%;
+                max-width: none;
+                transform: scale(1.32);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-visual {
+                position: relative;
+                min-height: 320px;
+                overflow: visible;
+            }
+
+            .hero-circle {
+                position: absolute;
+                top: 50%;
+                left: 62%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: min(62vw, 290px);
+                height: min(62vw, 290px);
+                z-index: 0;
+            }
+
+            .hero-logo-box {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: min(96%, 500px);
+                margin: 0;
+            }
+
+            .hero-logo-box img {
+                width: 100%;
+                transform: scale(1.2);
+                transform-origin: center;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           HERO SEGÚN BOCETO: ROPA GRANDE A LA DERECHA,
+           CÍRCULO ATRÁS COMO DECORACIÓN
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero-visual {
+                position: relative;
+                min-height: 560px;
+                overflow: visible;
+            }
+
+            /* El círculo queda atrás, más hacia el centro */
+            .hero-circle {
+                position: absolute;
+                top: 50%;
+                left: 36%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: clamp(360px, 24vw, 445px);
+                height: clamp(360px, 24vw, 445px);
+                z-index: 0;
+            }
+
+            /* La ropa se desplaza claramente a la derecha */
+            .hero-logo-box {
+                position: absolute;
+                top: 50%;
+                left: 70%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: min(118%, 900px);
+                margin: 0;
+            }
+
+            .hero-logo-box img {
+                display: block;
+                width: 100%;
+                max-width: none;
+                transform: scale(1.42);
+                transform-origin: center;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .hero-logo-box {
+                left: 72%;
+                width: min(122%, 980px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.48);
+            }
+
+            .hero-circle {
+                left: 34%;
+            }
+        }
+
+        /* En móvil no hacemos el desplazamiento extremo */
+        @media (max-width: 860px) {
+            .hero-circle {
+                left: 54%;
+                width: min(58vw, 280px);
+                height: min(58vw, 280px);
+            }
+
+            .hero-logo-box {
+                left: 54%;
+                width: min(100%, 520px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.24);
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           CORRECCIÓN FINAL HERO:
+           CÍRCULO CENTRADO DETRÁS DE LA IMAGEN
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero-visual {
+                position: relative;
+                min-height: 560px;
+                overflow: visible;
+            }
+
+            /* Imagen / ropa a la derecha */
+            .hero-logo-box {
+                position: absolute;
+                top: 50%;
+                left: 70%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: min(118%, 900px);
+                margin: 0;
+            }
+
+            .hero-logo-box img {
+                display: block;
+                width: 100%;
+                max-width: none;
+                transform: scale(1.42);
+                transform-origin: center;
+            }
+
+            /* Círculo centrado justo detrás de la imagen */
+            .hero-circle {
+                position: absolute;
+                top: 50%;
+                left: 70%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: clamp(360px, 24vw, 445px);
+                height: clamp(360px, 24vw, 445px);
+                z-index: 0;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .hero-logo-box {
+                left: 72%;
+                width: min(122%, 980px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.48);
+            }
+
+            .hero-circle {
+                left: 72%;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-visual {
+                position: relative;
+                overflow: visible;
+            }
+
+            .hero-logo-box {
+                position: absolute;
+                top: 50%;
+                left: 54%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: min(100%, 520px);
+                margin: 0;
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.24);
+                transform-origin: center;
+            }
+
+            .hero-circle {
+                position: absolute;
+                top: 50%;
+                left: 54%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: min(58vw, 280px);
+                height: min(58vw, 280px);
+                z-index: 0;
+            }
+        }
+
+    
+        /* -----------------------------------------------------
+           AJUSTE FINO HERO:
+           CÍRCULO Y FOTO UN POCO MÁS GRANDES
+        ----------------------------------------------------- */
+        @media (min-width: 861px) {
+            .hero-logo-box {
+                width: min(124%, 980px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.50);
+            }
+
+            .hero-circle {
+                width: clamp(395px, 26vw, 490px);
+                height: clamp(395px, 26vw, 490px);
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .hero-logo-box {
+                width: min(128%, 1040px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.56);
+            }
+
+            .hero-circle {
+                width: clamp(420px, 27vw, 520px);
+                height: clamp(420px, 27vw, 520px);
+            }
+        }
+
+        @media (max-width: 860px) {
+            .hero-logo-box {
+                width: min(104%, 560px);
+            }
+
+            .hero-logo-box img {
+                transform: scale(1.30);
+            }
+
+            .hero-circle {
+                width: min(64vw, 310px);
+                height: min(64vw, 310px);
+            }
+        }
+
+    
+        /* =====================================================
+           FIX UX 1 + 5 + 6
+           1) Evitar overlap del nav en viewports angostos
+           5) Mantener iconos/acciones dentro del header
+           6) Header sticky + navegación por anchors
+        ====================================================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #inicio,
+        #categorias,
+        #destacados,
+        #talles,
+        #nosotros,
+        #faq {
+            scroll-margin-top: 104px;
+        }
+
+        /* Header sticky en escritorio y móvil */
+        .header {
+            position: sticky !important;
+            top: 0;
+            z-index: 5000;
+            background: rgba(255, 255, 255, .97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 rgba(17,17,17,.08);
+        }
+
+        .header-container {
+            position: relative;
+        }
+
+        /* Los iconos sociales quedan contenidos en el header:
+           nunca flotando por encima del contenido */
+        .header-actions {
+            position: relative !important;
+            inset: auto !important;
+            z-index: 5003;
+            margin-left: auto;
+        }
+
+        .header-social,
+        .menu-mobile {
+            position: relative !important;
+            inset: auto !important;
+            flex: 0 0 auto;
+        }
+
+        @media (min-width: 861px) {
+            .navbar {
+                display: flex !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                max-height: none !important;
+                flex-direction: row !important;
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                overflow: visible !important;
+            }
+
+            .navbar a {
+                position: relative !important;
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                white-space: nowrap;
+            }
+        }
+
+        /* -----------------------------------------------------
+           MOBILE / TABLETS ANGOSTAS — incluido Surface Duo
+        ----------------------------------------------------- */
+        @media (max-width: 860px) {
+            #inicio,
+            #categorias,
+            #destacados,
+            #talles,
+            #nosotros,
+            #faq {
+                scroll-margin-top: 82px;
+            }
+
+            .header {
+                width: 100%;
+            }
+
+            .header-container {
+                min-height: 72px;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 10px;
+                padding-left: max(14px, env(safe-area-inset-left));
+                padding-right: max(14px, env(safe-area-inset-right));
+            }
+
+            .logo-container {
+                position: relative !important;
+                z-index: 5003;
+                flex: 0 1 auto;
+                min-width: 0;
+            }
+
+            .logo-container img {
+                display: block;
+                max-width: min(180px, 48vw);
+                height: auto;
+            }
+
+            .header-actions {
+                display: flex !important;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 8px;
+                flex: 0 0 auto;
+            }
+
+            .header-social {
+                width: 40px;
+                height: 40px;
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu-mobile {
+                width: 42px;
+                height: 42px;
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                z-index: 5004;
+            }
+
+            /* CLAVE DEL FIX:
+               el nav no existe visualmente mientras no tenga .active */
+            .navbar {
+                display: none !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                max-height: calc(100vh - 72px);
+                margin: 0 !important;
+                padding: 10px 16px 18px !important;
+
+                flex-direction: column !important;
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+                gap: 0 !important;
+
+                background: #fff !important;
+                border-top: 1px solid rgba(17,17,17,.08);
+                box-shadow: 0 16px 30px rgba(0,0,0,.10);
+
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+                z-index: 5002;
+            }
+
+            .navbar.active {
+                display: flex !important;
+            }
+
+            .navbar a {
+                position: static !important;
+                display: flex !important;
+                align-items: center;
+                width: 100% !important;
+                min-height: 48px;
+                margin: 0 !important;
+                padding: 13px 4px !important;
+
+                writing-mode: horizontal-tb !important;
+                text-orientation: mixed !important;
+                transform: none !important;
+                rotate: none !important;
+
+                white-space: normal !important;
+                line-height: 1.25 !important;
+                text-align: left !important;
+
+                border-bottom: 1px solid rgba(17,17,17,.08);
+            }
+
+            .navbar a:last-child {
+                border-bottom: 0;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        /* Surface Duo y anchos intermedios problemáticos */
+        @media (min-width: 520px) and (max-width: 720px) {
+            .header-container {
+                min-height: 74px;
+            }
+
+            .logo-container img {
+                max-width: 170px;
+            }
+
+            .navbar {
+                max-height: calc(100vh - 74px);
+            }
+
+            .header-social {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+        /* Teléfonos muy angostos: reducimos iconos para que jamás pisen el logo */
+        @media (max-width: 420px) {
+            .logo-container img {
+                max-width: 145px;
+            }
+
+            .header-actions {
+                gap: 5px;
+            }
+
+            .header-social {
+                width: 36px;
+                height: 36px;
+            }
+
+            .menu-mobile {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
+    
+        /* =====================================================
+           DESTACADOS CON IMÁGENES CONFIGURABLES
+           Cambiá solamente el src="" de cada <img>.
+        ====================================================== */
+        .featured-card {
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 220px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .featured-card .featured-icon {
+            display: none;
+        }
+
+        @media (max-width: 860px) {
+            .featured-image {
+                height: 210px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .featured-image {
+                height: 190px;
+            }
+        }
+
+    
+        /* =====================================================
+           SUBMENÚ DE CATEGORÍAS EN EL NAV
+        ====================================================== */
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-dropdown-trigger {
+            border: 0;
+            background: transparent;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: inherit;
+            cursor: pointer;
+
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+            line-height: inherit;
+            text-transform: uppercase;
+        }
+
+        .nav-dropdown-trigger i {
+            font-size: 9px;
+            transition: transform .2s ease;
+        }
+
+        .nav-dropdown.open .nav-dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            min-width: 180px;
+            padding: 8px;
+            margin-top: 8px;
+            background: #111;
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 14px 34px rgba(0,0,0,.18);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+            z-index: 6000;
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu,
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown:focus-within .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block !important;
+            width: 100%;
+            padding: 11px 12px !important;
+            color: #fff !important;
+            text-decoration: none;
+            text-align: left;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-dropdown-menu a:last-child {
+            border-bottom: 0;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: rgba(255,255,255,.08);
+        }
+
+        /* Evitar que el subrayado normal del nav aparezca dentro del dropdown */
+        .nav-dropdown-menu a::after {
+            display: none !important;
+        }
+
+        @media (max-width: 860px) {
+            .nav-dropdown {
+                width: 100%;
+                display: block;
+            }
+
+            .nav-dropdown-trigger {
+                width: 100%;
+                min-height: 48px;
+                justify-content: space-between;
+                padding: 13px 4px;
+                text-align: left;
+                border-bottom: 1px solid rgba(17,17,17,.08);
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none !important;
+                min-width: 0;
+                width: 100%;
+                padding: 0 0 0 14px;
+                background: #f7f7f7;
+                border: 0;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                display: none;
+            }
+
+            .nav-dropdown.open .nav-dropdown-menu {
+                display: block;
+            }
+
+            .nav-dropdown-menu a {
+                color: #111 !important;
+                border-bottom: 1px solid rgba(17,17,17,.08);
+            }
+
+            .nav-dropdown-menu a:hover {
+                background: rgba(17,17,17,.05);
+            }
+        }
+
+    
+        .nav-dropdown-menu::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -8px;
+            height: 8px;
+        }
+
+    
+        .nav-dropdown > .nav-dropdown-trigger {
+            text-decoration: none;
+        }
+
+    
+        /* =====================================================
+           PULIDO VISUAL — CARDS DE CATEGORÍAS
+           Solo afecta a la sección #categorias
+        ====================================================== */
+        #categorias .category-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(17,17,17,.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,.035);
+            transition:
+                transform .28s ease,
+                box-shadow .28s ease,
+                border-color .28s ease;
+        }
+
+        #categorias .category-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #111;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .28s ease;
+            z-index: 3;
+        }
+
+        #categorias .category-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(17,17,17,.28);
+            box-shadow: 0 18px 42px rgba(0,0,0,.10);
+        }
+
+        #categorias .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        #categorias .category-number {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            z-index: 4;
+
+            min-width: 34px;
+            height: 28px;
+            padding: 0 9px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #111;
+            color: #fff;
+
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+        #categorias .category-media {
+            position: relative;
+            overflow: hidden;
+            margin: 20px 20px 0;
+            min-height: 255px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at center, rgba(191,234,255,.75) 0 38%, transparent 39%),
+                #fafafa;
+        }
+
+        #categorias .category-media img {
+            width: 88%;
+            height: 245px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+
+            transition:
+                transform .35s ease,
+                filter .35s ease;
+        }
+
+        #categorias .category-card:hover .category-media img {
+            transform: scale(1.055);
+            filter: contrast(1.03);
+        }
+
+        #categorias .category-info {
+            padding: 26px 22px 24px;
+        }
+
+        #categorias .category-info h3 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        #categorias .category-info h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 32px;
+            height: 3px;
+            background: #bfeaff;
+            transition: width .28s ease;
+        }
+
+        #categorias .category-card:hover .category-info h3::after {
+            width: 100%;
+        }
+
+        #categorias .category-info p {
+            margin-top: 8px;
+            margin-bottom: 20px;
+            color: rgba(17,17,17,.68);
+        }
+
+        #categorias .category-info a {
+            width: fit-content;
+            min-height: 38px;
+            padding: 0 13px;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid #111;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                transform .2s ease;
+        }
+
+        #categorias .category-info a:hover {
+            background: #111;
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        #categorias .category-info a i {
+            font-size: 10px;
+            transition: transform .2s ease;
+        }
+
+        #categorias .category-info a:hover i {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 860px) {
+            #categorias .category-media {
+                min-height: 230px;
+                margin: 16px 16px 0;
+            }
+
+            #categorias .category-media img {
+                height: 220px;
+            }
+
+            #categorias .category-info {
+                padding: 22px 18px 20px;
+            }
+
+            #categorias .category-card:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        @media (max-width: 520px) {
+            #categorias .category-media {
+                min-height: 210px;
+            }
+
+            #categorias .category-media img {
+                height: 200px;
+            }
+
+            #categorias .category-info a {
+                min-height: 42px;
+            }
+        }
+
+    
+        /* =====================================================
+           PULIDO VISUAL — CARDS DE DESTACADOS
+           Solo afecta a la sección #destacados
+        ====================================================== */
+        #destacados .featured-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(17,17,17,.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,.035);
+            transition:
+                transform .28s ease,
+                box-shadow .28s ease,
+                border-color .28s ease;
+        }
+
+        #destacados .featured-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #111;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .28s ease;
+            z-index: 3;
+        }
+
+        #destacados .featured-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(17,17,17,.28);
+            box-shadow: 0 18px 42px rgba(0,0,0,.10);
+        }
+
+        #destacados .featured-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        #destacados .featured-image {
+            position: relative;
+            overflow: hidden;
+            margin: 20px 20px 0;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at center, rgba(191,234,255,.75) 0 38%, transparent 39%),
+                #fafafa;
+        }
+
+        #destacados .featured-image img {
+            width: 88%;
+            height: 235px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            transition:
+                transform .35s ease,
+                filter .35s ease;
+        }
+
+        #destacados .featured-card:hover .featured-image img {
+            transform: scale(1.055);
+            filter: contrast(1.03);
+        }
+
+        #destacados .featured-card > span {
+            display: inline-block;
+            width: fit-content;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            padding: 5px 8px;
+            background: #111;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        #destacados .featured-card h3 {
+            position: relative;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 14px;
+        }
+
+        #destacados .featured-card h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 34px;
+            height: 3px;
+            background: #bfeaff;
+            transition: width .28s ease;
+        }
+
+        #destacados .featured-card:hover h3::after {
+            width: 100%;
+        }
+
+        #destacados .featured-card p {
+            color: rgba(17,17,17,.68);
+            margin-top: 6px;
+            margin-bottom: 22px;
+        }
+
+        #destacados .featured-card > a {
+            width: fit-content;
+            min-height: 38px;
+            padding: 0 13px;
+            margin-top: auto;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid #111;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+
+            font-family: "Inter", sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                transform .2s ease;
+        }
+
+        #destacados .featured-card > a:hover {
+            background: #111;
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        #destacados .featured-card > a i {
+            font-size: 10px;
+            transition: transform .2s ease;
+        }
+
+        #destacados .featured-card > a:hover i {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 860px) {
+            #destacados .featured-image {
+                height: 225px;
+                margin: 16px 16px 0;
+            }
+
+            #destacados .featured-image img {
+                height: 210px;
+            }
+
+            #destacados .featured-card:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        @media (max-width: 520px) {
+            #destacados .featured-image {
+                height: 205px;
+            }
+
+            #destacados .featured-image img {
+                height: 190px;
+            }
+
+            #destacados .featured-card > a {
+                min-height: 42px;
+            }
+        }
+
+    
+        /* SEPARACIÓN ENTRE CTA DE CONTACTO Y FOOTER */
+        .contact-cta {
+            margin-bottom: clamp(32px, 4vw, 56px);
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- =====================================================
+         TOP BAR / CARRUSEL
+    ====================================================== -->
+    <div class="top-bar">
+        <div class="bar-marquee">
+            <div class="bar-track">
+                <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS Y PEDIDOS POR WHATSAPP</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                <span>•</span>
+                <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS
+                </a>
+                <span>•</span>
+                <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS Y PEDIDOS POR WHATSAPP</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                <span>•</span>
+                <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS
+                </a>
+            </div>
+
+            <div class="bar-track" aria-hidden="true">
+                <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS Y PEDIDOS POR WHATSAPP</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                <span>•</span>
+                <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS
+                </a>
+                <span>•</span>
+                <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS Y PEDIDOS POR WHATSAPP</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                <span>•</span>
+                <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#inicio" class="logo-container">
+                <img src="./src/logotito2.png" alt="TITO INDUMENTARIA" />
+            </a>
+
+            <nav class="navbar" id="navbar">
+                <a href="#inicio">INICIO</a>
+                <a href="catalogo.html">CATÁLOGO</a>
+                <div class="nav-dropdown">
+                    <a
+                        href="#"
+                        class="nav-dropdown-trigger"
+                        aria-expanded="false"
+                    >
+                        CATEGORÍAS
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </a>
+
+                    <div class="nav-dropdown-menu">
+                        <a href="catalogo.html?cat=remeras">REMERAS</a>
+                        <a href="catalogo.html?cat=camisetas">CAMISETAS</a>
+                        <a href="catalogo.html?cat=gorras">GORRAS</a>
+                        <a href="catalogo.html?cat=shorts">SHORTS</a>
+                    </div>
+                </div>
+                <a href="#destacados">DESTACADOS</a>
+                <a href="#talles">TALLES</a>
+                <a href="#nosotros">NOSOTROS</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="header-actions">
+                <a
+                    href="https://www.instagram.com/tito_indumentarias/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="header-social"
+                    aria-label="Instagram de TITO"
+                >
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a
+                    href="https://wa.me/5493492399509?text=Hola%20TITO%20INDUMENTARIA,%20quiero%20hacer%20una%20consulta."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="header-social"
+                    aria-label="WhatsApp de TITO"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <button
+                    class="menu-mobile"
+                    id="menuMobile"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                
+
+                <h1>TITO</h1>
+                <h2>INDUMENTARIA</h2>
+
+                <div class="hero-categories">
+                    <span>REMERAS</span>
+                    <span>•</span>
+                    <span>SHORTS</span>
+                    <span>•</span>
+                    <span>GORRAS</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#categorias" class="btn-primary">
+                        VER CATEGORÍAS
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+
+                    <a
+                        href="https://wa.me/5493492399509?text=Hola%20TITO%20INDUMENTARIA,%20quiero%20consultar%20los%20productos%20disponibles."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        CONSULTAR
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-circle"></div>
+
+                <div class="hero-logo-box">
+                    <img src="./src/l.png" alt="Productos TITO INDUMENTARIA" />
+                </div>
+            </div>
+
+            <div class="hero-background-text">TITO</div>
+        </section>
+
+        <!-- =====================================================
+             INFO BAR / CARRUSEL
+        ====================================================== -->
+        <section class="info-bar">
+            <div class="bar-marquee">
+                <div class="bar-track">
+                    <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS POR WHATSAPP</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS POR WHATSAPP</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS</span>
+                </div>
+
+                <div class="bar-track" aria-hidden="true">
+                    <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS POR WHATSAPP</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-whatsapp"></i> CONSULTAS POR WHATSAPP</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-shirt"></i> REMERAS · SHORTS · GORRAS</span>
+                    <span>•</span>
+                    <span><i class="fa-brands fa-instagram"></i> @TITO_INDUMENTARIAS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CATEGORÍAS
+        ====================================================== -->
+        <section class="section categories-section" id="categorias">
+            <div class="section-heading">
+                <span class="section-kicker">LO QUE ENCONTRÁS EN TITO</span>
+                <h2>CATEGORÍAS</h2>
+                <p>Consultá los modelos, talles, colores y disponibilidad.</p>
+            </div>
+
+            <div class="categories-grid">
+
+                <!-- REMERAS -->
+                <article class="category-card">
+                    <div class="category-number">01</div>
+
+                    <div class="category-media">
+                        <img
+                            src="./src/remeras.jpg"
+                            alt="Remeras"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <div class="category-fallback">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-info">
+                        <h3>REMERAS</h3>
+                        <p>Remeras casuales y de fútbol.</p>
+
+                        <a href="catalogo.html?cat=remeras">
+                            VER MODELOS
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SHORTS -->
+                <article class="category-card">
+                    <div class="category-number">02</div>
+
+                    <div class="category-media">
+                        <img
+                            src="./src/pantalones.png"
+                            alt="Shorts"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <div class="category-fallback">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-info">
+                        <h3>SHORTS</h3>
+                        <p>Diferentes modelos disponibles.</p>
+
+                        <a href="catalogo.html?cat=shorts">
+                            VER MODELOS
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GORRAS -->
+                <article class="category-card">
+                    <div class="category-number">03</div>
+
+                    <div class="category-media">
+                        <img
+                            src="./src/gorras.jpg"
+                            alt="Gorras"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <div class="category-fallback">
+                            <span class="cap-mark cap-big" aria-hidden="true">
+                                <svg viewBox="0 0 64 64">
+                                    <path d="M18 28c0-9 8-16 18-16 12 0 21 7 24 17-7 0-13 2-19 7-7-4-15-7-23-8z"></path>
+                                    <path d="M14 31c8 0 18 2 28 8-5 6-11 9-19 9-8 0-13-4-13-10 0-3 1-5 4-7z"></path>
+                                    <path d="M41 37c7 0 12 2 12 5 0 5-8 8-18 9 3-3 6-8 6-14z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="category-info">
+                        <h3>ACCESORIOS</h3>
+                        <p>Gorras, viseras y más.</p>
+
+                        <a href="catalogo.html?cat=gorras">
+                            VER MODELOS
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="catalog-cta-wrap">
+                <a
+                    href="catalogo.html"
+                    class="catalog-cta"
+                >
+                    VER CATÁLOGO
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             LIFESTYLE / EDITORIAL
+        ====================================================== -->
+        <section class="lifestyle-section" aria-label="Estilo TITO">
+            <div class="lifestyle-media" aria-hidden="true">
+                <img
+                    src="src/fondocamisetas.png"
+                    alt=""
+                    loading="lazy"
+                />
+            </div>
+
+            <div class="lifestyle-content">
+                <span class="lifestyle-kicker">ESTILO TITO</span>
+                <h2>PRENDAS PARA USAR A TU MANERA.</h2>
+
+                <a href="#categorias" class="lifestyle-cta">
+                    VER CATEGORÍAS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             DESTACADOS
+        ====================================================== -->
+        <section class="section featured-section" id="destacados">
+            <div class="section-heading">
+                <span class="section-kicker">SELECCIÓN TITO</span>
+                <h2>DESTACADOS</h2>
+                <p>Estas son las principales líneas disponibles actualmente.</p>
+            </div>
+
+            <div class="featured-grid">
+                <article class="featured-card">
+                    <!-- CAMBIÁ SOLO ESTA RUTA PARA ELEGIR LA FOTO -->
+                    <div class="featured-image">
+                        <img src="./src/gorra1.png" alt="Gorra Red Bull">
+                    </div>
+
+                    <span>•GORRAS FÓRMULA 1•</span>
+                    <h3>GORRA RED BULL</h3>
+                    <p>Consultá disponibilidad, colores y modelos.</p>
+
+                    <a
+                        href="https://wa.me/5493492399509?text=Hola%20TITO,%20quiero%20consultar%20por%20la%20gorra%20Red%20Bull."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CONSULTAR POR WHATSAPP
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="featured-card">
+                    <!-- CAMBIÁ SOLO ESTA RUTA PARA ELEGIR LA FOTO -->
+                    <div class="featured-image">
+                        <img src="./src/gorra2.png" alt="Producto destacado 2">
+                    </div>
+
+                    <span>•GORRAS URBANAS•</span>
+                    <h3>GORRA NY</h3>
+                    <p>Consultá disponibilidad, colores y modelos.</p>
+
+                    <a
+                        href="https://wa.me/5493492399509?text=Hola%20TITO,%20quiero%20consultar%20por%20este%20producto."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CONSULTAR POR WHATSAPP
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="featured-card">
+                    <!-- CAMBIÁ SOLO ESTA RUTA PARA ELEGIR LA FOTO -->
+                    <div class="featured-image">
+                        <img src="./src/gorra3.png" alt="Producto destacado 3">
+                    </div>
+
+                    <span>•GORRAS FÚTBOL•</span>
+                    <h3>GORRA RIVER PLATE</h3>
+                    <p>Consultá disponibilidad, colores y modelos.</p>
+
+                    <a
+                        href="https://wa.me/5493492399509?text=Hola%20TITO,%20quiero%20consultar%20por%20este%20producto."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CONSULTAR POR WHATSAPP
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             BANNER
+        ====================================================== -->
+        <section class="brand-banner">
+            <div class="brand-banner-background">TITO</div>
+
+            <div class="brand-banner-content">
+                <span>TITO INDUMENTARIA</span>
+                <h2>REMERAS.<br>SHORTS.<br>ACCESORIOS.</h2>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             ACCESOS RÁPIDOS
+        ====================================================== -->
+        <section class="quick-links">
+            <a href="#talles">
+                <i class="fa-solid fa-ruler"></i>
+                <div>
+                    <h3>GUÍA DE TALLES</h3>
+                    <p>Encontrá tu talle.</p>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="#nosotros">
+                <i class="fa-regular fa-user"></i>
+                <div>
+                    <h3>SOBRE TITO</h3>
+                    <p>Conocé más sobre nosotros.</p>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="#faq">
+                <i class="fa-regular fa-circle-question"></i>
+                <div>
+                    <h3>PREGUNTAS FRECUENTES</h3>
+                    <p>Resolvé tus dudas.</p>
+                </div>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- =====================================================
+             SOBRE NOSOTROS
+        ====================================================== -->
+        <section class="about-section" id="nosotros">
+            <div class="about-container">
+
+                <div class="about-logo">
+                    <img src="./src/bolsa2.png" alt="Bolsa TITO INDUMENTARIA" />
+                </div>
+
+                <div class="about-content">
+                    <span class="section-kicker">CONOCÉ TITO</span>
+                    <h2>SOBRE NOSOTROS</h2>
+
+                    <p class="about-intro">
+                        TITO INDUMENTARIA es una tienda dedicada a la venta de prendas y accesorios.
+                    </p>
+
+                    <p>
+                        Actualmente contamos con remeras, incluyendo modelos de fútbol, shorts y accesorios como gorras.
+                    </p>
+
+                    <p>
+                        Podés consultar modelos, talles, colores, precios y stock directamente por WhatsApp o Instagram.
+                    </p>
+
+                    <div class="about-buttons">
+                        <a
+                            href="https://wa.me/5493492399509"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="about-whatsapp"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
+                            +54 9 3492 39-9509
+                        </a>
+
+                        <a
+                            href="https://www.instagram.com/tito_indumentarias/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="about-instagram"
+                        >
+                            <i class="fa-brands fa-instagram"></i>
+                            @tito_indumentarias
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             GUÍA DE TALLES
+        ====================================================== -->
+        <section class="size-section" id="talles">
+            <div class="section-heading">
+                <span class="section-kicker">ENCONTRÁ TU TALLE</span>
+                <h2>GUÍA DE TALLES</h2>
+                <p>Utilizá esta referencia para elegir el talle de tu remera.</p>
+            </div>
+
+            <div class="size-image-container size-image-small">
+                <a
+                    href="./src/guiatalles.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="size-image-link"
+                    aria-label="Abrir guía de talles en tamaño completo"
+                >
+                    <img
+                        src="./src/guiatalles.png"
+                        alt="Guía de talles para remeras"
+                        class="size-image"
+                    />
+                    <span class="size-image-link-label">
+                        VER GUÍA EN GRANDE
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </span>
+                </a>
+            </div>
+
+            <div class="size-help">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Las medidas son aproximadas. Si tenés dudas, consultanos.</span>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             FAQ
+        ====================================================== -->
+        <!-- =====================================================
+     FAQ
+====================================================== -->
+
+<section class="faq-section" id="faq">
+
+    <div class="faq-layout">
+
+        <div class="faq-title">
+
+            <span class="section-kicker">
+                INFORMACIÓN
+            </span>
+
+            <h2>
+                PREGUNTAS<br>
+                FRECUENTES
+            </h2>
+
+            <p>
+                Si necesitás más información,
+                podés escribirnos directamente.
+            </p>
+
+        </div>
+
+
+        <div class="faq-container">
+
+
+            <!-- PREGUNTA 1 -->
+
+            <details class="faq-item">
+
+                <summary class="faq-question">
+
+                    <span>
+                        ¿Cómo puedo comprar?
+                    </span>
+
+                </summary>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Escribinos por WhatsApp indicando qué producto
+                        te interesa. Te informamos disponibilidad,
+                        talle y precio.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <!-- PREGUNTA 2 -->
+
+            <details class="faq-item">
+
+                <summary class="faq-question">
+
+                    <span>
+                        ¿Qué productos venden?
+                    </span>
+
+                </summary>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Actualmente contamos con remeras,
+                        incluyendo modelos de fútbol,
+                        shorts y accesorios como gorras.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <!-- PREGUNTA 3 -->
+
+            <details class="faq-item">
+
+                <summary class="faq-question">
+
+                    <span>
+                        ¿Cómo sé qué talle elegir?
+                    </span>
+
+                </summary>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Podés utilizar la guía de talles
+                        que figura en esta página.
+                        Si todavía tenés dudas,
+                        escribinos y te ayudamos.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <!-- PREGUNTA 4 -->
+
+            <details class="faq-item">
+
+                <summary class="faq-question">
+
+                    <span>
+                        ¿Puedo consultar stock?
+                    </span>
+
+                </summary>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Sí. Consultanos por WhatsApp
+                        o Instagram para conocer
+                        la disponibilidad actual.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+            <!-- PREGUNTA 5 -->
+
+            <details class="faq-item">
+
+                <summary class="faq-question">
+
+                    <span>
+                        ¿Qué medios de pago aceptan?
+                    </span>
+
+                </summary>
+
+                <div class="faq-answer">
+
+                    <p>
+                        Consultanos para conocer los medios
+                        de pago disponibles al momento
+                        de realizar la compra.
+                    </p>
+
+                </div>
+
+            </details>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =====================================================
+             CTA WHATSAPP
+        ====================================================== -->
+        <section class="contact-cta">
+            <div class="cta-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+
+            <div class="cta-content">
+                <span>ATENCIÓN DIRECTA</span>
+                <h2>¿TE GUSTÓ ALGO?<br>ESCRIBINOS.</h2>
+                <p>Consultá stock, talles, colores y precios. Te respondemos directamente por WhatsApp.</p>
+            </div>
+
+            <a
+                href="https://wa.me/5493492399509?text=Hola%20TITO,%20vengo%20desde%20la%20web%20y%20quiero%20hacer%20una%20consulta."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button"
+            >
+                ESCRIBIR POR WHATSAPP
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="./src/bolsa2.png" alt="TITO INDUMENTARIA" />
+                </div>
+                <p>Remeras, shorts y accesorios.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>NAVEGACIÓN</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#categorias">Categorías</a>
+                <a href="#destacados">Destacados</a>
+                <a href="#talles">Guía de talles</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#faq">Preguntas frecuentes</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>CATEGORÍAS</h3>
+                <a href="#categorias">Remeras</a>
+                <a href="#categorias">Shorts</a>
+                <a href="#categorias">Accesorios</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>CONTACTO</h3>
+
+                <a
+                    href="https://wa.me/5493492399509"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-contact"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+                    +54 9 3492 39-9509
+                </a>
+
+                <a
+                    href="https://www.instagram.com/tito_indumentarias/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-contact"
+                >
+                    <i class="fa-brands fa-instagram"></i>
+                    @tito_indumentarias
+                </a>
+
+                <p>Consultas, stock y pedidos directamente por WhatsApp.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 MANDARINA SOFTWARE. Todos los derechos reservados.</p>
+
+            <a href="#inicio">
+                VOLVER ARRIBA
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+   
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const botonMenu = document.getElementById("menuMobile");
+    const navbar = document.getElementById("navbar");
+
+    if (!botonMenu || !navbar) {
+        console.error("No se encontró menuMobile o navbar");
+        return;
+    }
+
+    const icono = botonMenu.querySelector("i");
+
+
+    /* ABRIR / CERRAR */
+
+    botonMenu.addEventListener("click", function () {
+
+        const abierto = navbar.classList.toggle("active");
+
+        botonMenu.setAttribute(
+            "aria-expanded",
+            abierto ? "true" : "false"
+        );
+
+
+        if (abierto) {
+
+            document.body.classList.add("menu-open");
+
+            if (icono) {
+                icono.classList.remove("fa-bars");
+                icono.classList.add("fa-xmark");
+            }
+
+        } else {
+
+            document.body.classList.remove("menu-open");
+
+            if (icono) {
+                icono.classList.remove("fa-xmark");
+                icono.classList.add("fa-bars");
+            }
+
+        }
+
+    });
+
+
+    /* CERRAR CUANDO ELEGÍS UNA OPCIÓN */
+
+    navbar.querySelectorAll("a").forEach(function (enlace) {
+
+        enlace.addEventListener("click", function () {
+
+            navbar.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+            botonMenu.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            if (icono) {
+                icono.classList.remove("fa-xmark");
+                icono.classList.add("fa-bars");
+            }
+
+        });
+
+    });
+
+
+    /* CERRAR AL VOLVER A ESCRITORIO */
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 860) {
+
+            navbar.classList.remove("active");
+
+            document.body.classList.remove("menu-open");
+
+            botonMenu.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            if (icono) {
+                icono.classList.remove("fa-xmark");
+                icono.classList.add("fa-bars");
+            }
+
+        }
+
+    });
+
+
+
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.querySelector(".nav-dropdown");
+    const trigger = document.querySelector(".nav-dropdown-trigger");
+
+    if (!dropdown || !trigger) return;
+
+    trigger.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const abierto = dropdown.classList.toggle("open");
+        trigger.setAttribute("aria-expanded", abierto ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove("open");
+            trigger.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    dropdown.querySelectorAll(".nav-dropdown-menu a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            dropdown.classList.remove("open");
+            trigger.setAttribute("aria-expanded", "false");
+        });
+    });
+});
+</script>
+
+</body>
+</html>

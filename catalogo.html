@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Catálogo de TITO INDUMENTARIA. Remeras, shorts, gorras y accesorios.">
+<title>Catálogo — TITO INDUMENTARIA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+  --negro:#111111;
+  --negro-suave:#1b1b1b;
+  --blanco:#ffffff;
+  --celeste:#d9f3ff;
+  --celeste-fuerte:#bfeaff;
+  --gris:#f5f5f5;
+  --gris-2:#e8e8e8;
+  --texto:#111111;
+  --texto-suave:#6c6c6c;
+  --wpp:#25d366;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:"Inter",sans-serif;
+  color:var(--texto);
+  background:var(--gris);
+}
+
+a{color:inherit}
+
+button,input{font:inherit}
+
+/* =====================================================
+   HEADER — MISMA LÓGICA VISUAL QUE TITO
+===================================================== */
+.header{
+  position:sticky;
+  top:0;
+  z-index:500;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(17,17,17,.08);
+}
+
+.header-inner{
+  width:min(1320px,92%);
+  min-height:86px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.logo img{
+  width:190px;
+  max-height:72px;
+  object-fit:contain;
+  display:block;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.nav a{
+  text-decoration:none;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  position:relative;
+}
+
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:2px;
+  background:var(--negro);
+  transition:.2s;
+}
+
+.nav a:hover::after,
+.nav a.active::after{width:100%}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.header-icon,
+.menu-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--negro);
+  color:#fff;
+  border:0;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.menu-btn{display:none}
+
+/* =====================================================
+   HERO CATÁLOGO
+===================================================== */
+.catalogo-hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--negro);
+  padding:86px 5vw 72px;
+  border-bottom:8px solid var(--celeste);
+}
+
+.catalogo-hero::after{
+  content:"TITO";
+  position:absolute;
+  right:-2vw;
+  bottom:-55px;
+  font-family:"Oswald",sans-serif;
+  font-weight:700;
+  font-size:clamp(150px,24vw,380px);
+  line-height:.8;
+  color:rgba(217,243,255,.08);
+  pointer-events:none;
+}
+
+.hero-inner{
+  width:min(1320px,100%);
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.section-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--celeste);
+  margin-bottom:14px;
+}
+
+.section-tag::before{
+  content:"";
+  width:30px;
+  height:2px;
+  background:var(--celeste);
+}
+
+.catalogo-hero h1{
+  font-family:"Oswald",sans-serif;
+  font-weight:700;
+  font-size:clamp(52px,8vw,94px);
+  line-height:.92;
+  text-transform:uppercase;
+  color:#fff;
+  max-width:850px;
+  margin-bottom:20px;
+}
+
+.catalogo-hero h1 .hl{
+  color:var(--celeste);
+}
+
+.catalogo-hero p{
+  max-width:630px;
+  color:rgba(255,255,255,.72);
+  line-height:1.7;
+  font-size:15px;
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+.catalogo-toolbar{
+  position:sticky;
+  top:86px;
+  z-index:100;
+  background:#fff;
+  border-bottom:1px solid var(--gris-2);
+  padding:18px 5vw;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  box-shadow:0 8px 20px rgba(0,0,0,.025);
+}
+
+.search-box{
+  flex:1 1 300px;
+  max-width:420px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 14px;
+  border:1.5px solid var(--gris-2);
+  background:#fafafa;
+  transition:.2s;
+}
+
+.search-box:focus-within{
+  border-color:var(--negro);
+  background:#fff;
+}
+
+.search-box i{font-size:14px;color:#888}
+
+.search-box input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  font-size:13px;
+}
+
+.filtros{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.filtro-label{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--texto-suave);
+  margin-right:3px;
+}
+
+.filtro-btn{
+  padding:9px 15px;
+  border:1.5px solid var(--gris-2);
+  background:#fff;
+  color:#666;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.filtro-btn:hover{
+  border-color:var(--negro);
+  color:var(--negro);
+}
+
+.filtro-btn.active{
+  background:var(--negro);
+  color:#fff;
+  border-color:var(--negro);
+}
+
+.toolbar-right{
+  margin-left:auto;
+}
+
+.contador-resultados{
+  font-size:12px;
+  color:var(--texto-suave);
+  white-space:nowrap;
+}
+
+.contador-resultados span{
+  color:var(--negro);
+  font-weight:800;
+}
+
+/* =====================================================
+   GRILLA
+===================================================== */
+.catalogo-body{
+  width:min(1480px,100%);
+  margin:auto;
+  padding:46px 5vw 90px;
+}
+
+.catalogo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+
+.prod-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  background:#fff;
+  border:1px solid #e4e4e4;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+
+.prod-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--negro);
+  box-shadow:0 14px 34px rgba(0,0,0,.10);
+}
+
+.prod-card.seleccionado{
+  border:2px solid var(--negro);
+  box-shadow:0 0 0 4px rgba(217,243,255,.9);
+}
+
+.prod-check{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:3;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:2px solid #ddd;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  transition:.2s;
+}
+
+.prod-check i{
+  opacity:0;
+  font-size:12px;
+}
+
+.prod-card.seleccionado .prod-check{
+  background:var(--celeste);
+  border-color:var(--negro);
+}
+
+.prod-card.seleccionado .prod-check i{opacity:1}
+
+.prod-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:3;
+  padding:6px 10px;
+  background:var(--negro);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.prod-img{
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:#fff;
+  border-bottom:1px solid #efefef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.prod-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  transition:transform .35s ease;
+}
+
+.prod-card:hover .prod-img img{transform:scale(1.035)}
+
+.prod-img-fallback{
+  width:100%;
+  height:100%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#fff,var(--celeste));
+  color:var(--negro);
+  font-size:44px;
+}
+
+.prod-body{
+  padding:18px 18px 20px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.prod-cat{
+  color:#6b6b6b;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.prod-body h3{
+  font-family:"Oswald",sans-serif;
+  font-size:25px;
+  line-height:1.05;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.prod-body p{
+  color:var(--texto-suave);
+  font-size:13px;
+  line-height:1.55;
+  margin-bottom:18px;
+  flex:1;
+}
+
+.prod-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding-top:14px;
+  border-top:1px solid #ededed;
+}
+
+.prod-precio{
+  font-family:"Oswald",sans-serif;
+  font-size:21px;
+  font-weight:600;
+}
+
+.prod-precio.consultar{
+  font-family:"Inter",sans-serif;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.prod-wpp{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  background:var(--negro);
+  color:#fff;
+  text-decoration:none;
+  border-radius:50%;
+  transition:.2s;
+}
+
+.prod-wpp:hover{
+  background:var(--wpp);
+  transform:scale(1.06);
+}
+
+/* =====================================================
+   VACÍO / PAGINACIÓN
+===================================================== */
+.catalogo-vacio{
+  grid-column:1/-1;
+  text-align:center;
+  padding:100px 20px;
+}
+
+.catalogo-vacio i{
+  font-size:52px;
+  margin-bottom:18px;
+  color:#bbb;
+}
+
+.catalogo-vacio h3{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.catalogo-vacio p{color:#999;font-size:14px}
+
+.paginacion{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:38px;
+  flex-wrap:wrap;
+}
+
+.pag-btn{
+  min-width:40px;
+  height:40px;
+  padding:0 12px;
+  border:1px solid #ddd;
+  background:#fff;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+}
+
+.pag-btn:hover:not(:disabled){
+  border-color:var(--negro);
+}
+
+.pag-btn.active{
+  background:var(--negro);
+  color:#fff;
+  border-color:var(--negro);
+}
+
+.pag-btn:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.pag-info{
+  width:100%;
+  margin-top:8px;
+  text-align:center;
+  color:#888;
+  font-size:12px;
+}
+
+/* =====================================================
+   BARRA SELECCIÓN
+===================================================== */
+.seleccion-bar{
+  position:fixed;
+  left:50%;
+  bottom:-120px;
+  transform:translateX(-50%);
+  z-index:999;
+  min-width:min(520px,calc(100% - 30px));
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  background:var(--negro);
+  color:#fff;
+  border:2px solid var(--celeste);
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+  transition:bottom .3s ease;
+}
+
+.seleccion-bar.visible{bottom:22px}
+
+.seleccion-info{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.seleccion-info span{
+  color:var(--celeste);
+  font-size:20px;
+}
+
+.btn-consultar-sel{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--celeste);
+  color:var(--negro);
+  text-decoration:none;
+  padding:11px 17px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.btn-limpiar-sel{
+  border:0;
+  background:transparent;
+  color:#aaa;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer{
+  background:var(--negro);
+  color:#fff;
+  padding:58px 5vw 24px;
+}
+
+.footer-grid{
+  width:min(1320px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:50px;
+}
+
+.footer-logo img{
+  width:190px;
+  max-height:90px;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+  margin-bottom:16px;
+}
+
+.footer h3{
+  font-family:"Oswald",sans-serif;
+  font-size:18px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.footer p,
+.footer a{
+  color:rgba(255,255,255,.65);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.footer a{
+  display:block;
+  text-decoration:none;
+  margin-bottom:8px;
+}
+
+.footer a:hover{color:var(--celeste)}
+
+.footer-bottom{
+  width:min(1320px,100%);
+  margin:36px auto 0;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+  font-size:11px;
+  color:rgba(255,255,255,.45);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media(max-width:1100px){
+  .catalogo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(max-width:860px){
+  .header-inner{min-height:72px}
+  .nav{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    flex-direction:column;
+    align-items:stretch;
+    background:#fff;
+    border-top:1px solid #eee;
+    padding:14px 18px 20px;
+    box-shadow:0 18px 30px rgba(0,0,0,.12);
+  }
+  .nav.active{display:flex}
+  .nav a{padding:10px 2px}
+  .menu-btn{display:grid}
+  .logo img{width:155px}
+  .catalogo-toolbar{top:72px}
+  .toolbar-right{margin-left:0;width:100%}
+  .catalogo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:560px){
+  .header-icon{display:none}
+  .catalogo-hero{padding:62px 18px 52px}
+  .catalogo-toolbar{padding:14px 16px;gap:12px}
+  .search-box{max-width:none;flex-basis:100%}
+  .filtros{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .filtro-label{display:none}
+  .filtro-btn{flex:0 0 auto}
+  .catalogo-body{padding:28px 14px 70px}
+  .catalogo-grid{gap:12px}
+  .prod-body{padding:13px 12px 15px}
+  .prod-body h3{font-size:20px}
+  .prod-body p{font-size:12px}
+  .prod-badge{font-size:9px}
+  .prod-footer{align-items:flex-end}
+  .prod-precio{font-size:18px}
+  .prod-wpp{width:36px;height:36px}
+  .seleccion-bar{
+    bottom:-170px;
+    flex-wrap:wrap;
+    width:calc(100% - 22px);
+    min-width:0;
+  }
+  .seleccion-bar.visible{bottom:12px}
+  .btn-consultar-sel{flex:1;justify-content:center}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .footer-bottom{flex-direction:column}
+}
+
+@media(max-width:390px){
+  .catalogo-grid{grid-template-columns:1fr}
+}
+
+.prod-img{
+  text-decoration:none;
+  color:inherit;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="./src/logotito2.png" alt="TITO INDUMENTARIA">
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="index.html#talles">Talles</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-icon" href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a class="header-icon" href="https://wa.me/5493492399509" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="catalogo-hero">
+  <div class="hero-inner">
+    <div class="section-tag">TITO INDUMENTARIA</div>
+    <h1>Catálogo de <span class="hl">productos</span></h1>
+    <p>
+      Explorá remeras, shorts, gorras y accesorios. Seleccioná los productos que te interesan
+      y consultanos directamente por WhatsApp.
+    </p>
+  </div>
+</section>
+
+<div class="catalogo-toolbar">
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="buscador" placeholder="Buscar producto, categoría...">
+  </div>
+
+  <div class="filtros">
+    <span class="filtro-label">Categoría:</span>
+    <button class="filtro-btn active" data-cat="todos">Todos</button>
+    <button class="filtro-btn" data-cat="remeras">Remeras</button>
+    <button class="filtro-btn" data-cat="camisetas">Camisetas</button>
+    <button class="filtro-btn" data-cat="shorts">Shorts</button>
+    <button class="filtro-btn" data-cat="gorras">Gorras</button>
+    <button class="filtro-btn" data-cat="accesorios">Accesorios</button>
+  </div>
+
+  <div class="toolbar-right">
+    <span class="contador-resultados">
+      Mostrando <span id="cant-resultados">0</span> productos
+    </span>
+  </div>
+</div>
+
+<main class="catalogo-body">
+  <div class="catalogo-grid" id="catalogo-grid"></div>
+  <div class="paginacion" id="paginacion"></div>
+</main>
+
+<div class="seleccion-bar" id="seleccion-bar">
+  <div class="seleccion-info">
+    <span id="cant-sel">0</span> seleccionado(s)
+  </div>
+
+  <a href="#" class="btn-consultar-sel" id="btn-consultar-wpp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp"></i>
+    Consultar selección
+  </a>
+
+  <button class="btn-limpiar-sel" id="btn-limpiar" type="button" title="Limpiar selección">✕</button>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="./src/logotito2.png" alt="TITO INDUMENTARIA">
+      </div>
+      <p>Remeras, shorts, gorras y accesorios. Consultá stock, modelos, talles y disponibilidad directamente con TITO.</p>
+    </div>
+
+    <div>
+      <h3>Navegación</h3>
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#talles">Guía de talles</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#faq">Preguntas frecuentes</a>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <a href="https://wa.me/5493492399509" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i> +54 9 3492 39-9509
+      </a>
+      <a href="https://www.instagram.com/tito_indumentarias/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram"></i> @tito_indumentarias
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 TITO INDUMENTARIA</span>
+    <span>Desarrollado por MANDARINA SOFTWARE</span>
+  </div>
+</footer>
+
+<script type="module">
+import { db } from "./js/firebase-config.js";
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const WHATSAPP = "5493492399509";
+const POR_PAGINA = 12;
+
+let productos = [];
+let filtroCategoria = "todos";
+let busqueda = "";
+let paginaActual = 1;
+const seleccionados = new Set();
+
+const grid = document.getElementById("catalogo-grid");
+const contador = document.getElementById("cant-resultados");
+const paginacion = document.getElementById("paginacion");
+const barraSeleccion = document.getElementById("seleccion-bar");
+const cantSel = document.getElementById("cant-sel");
+const btnConsultarSel = document.getElementById("btn-consultar-wpp");
+
+function escaparHTML(texto=""){
+  return String(texto)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function normalizarCategoria(valor=""){
+  const raw = String(valor)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .toLowerCase()
+    .trim();
+
+  const aliases = {
+    remera:"remeras",
+    remeras:"remeras",
+    camiseta:"camisetas",
+    camisetas:"camisetas",
+    short:"shorts",
+    shorts:"shorts",
+    gorra:"gorras",
+    gorras:"gorras",
+    accesorio:"accesorios",
+    accesorios:"accesorios"
+  };
+
+  return aliases[raw] || raw;
+}
+
+function nombreCategoria(cat){
+  const nombres = {
+    remeras:"Remeras",
+    camisetas:"Camisetas",
+    shorts:"Shorts",
+    gorras:"Gorras",
+    accesorios:"Accesorios"
+  };
+  return nombres[cat] || cat;
+}
+
+function formatearPrecio(precio, mostrarPrecio=true){
+  if(mostrarPrecio === false) return "Consultar";
+
+  const numero = Number(precio);
+
+  if(!Number.isFinite(numero) || numero <= 0){
+    return "Consultar";
+  }
+
+  return "$ " + numero.toLocaleString("es-AR");
+}
+
+function productoActivo(p){
+  if(typeof p.Activo === "boolean") return p.Activo;
+  if(typeof p.activo === "boolean") return p.activo;
+
+  const estado = String(p.Estado || p.estado || "").toLowerCase();
+  return estado !== "inactivo";
+}
+
+function mapearProducto(docSnap){
+  const p = docSnap.data();
+
+  const categoria = normalizarCategoria(
+    p.Categoria ??
+    p.Categoría ??
+    p.categoria ??
+    ""
+  );
+
+  const imagenes =
+    Array.isArray(p.Imagenes) ? p.Imagenes :
+    Array.isArray(p.imagenes) ? p.imagenes :
+    Array.isArray(p.Fotos) ? p.Fotos :
+    Array.isArray(p.fotos) ? p.fotos :
+    [];
+
+  const imagen =
+    p.Imagen ??
+    p.imagen ??
+    imagenes[0] ??
+    "";
+
+  const mostrarPrecio =
+    (p.MostrarPrecio ?? p.mostrarPrecio ?? true) !== false;
+
+  const destacado =
+    (p.Destacado ?? p.destacado ?? false) === true;
+
+  return {
+    id: docSnap.id,
+    nombre: p.Nombre ?? p.nombre ?? "Producto sin nombre",
+    categoria,
+    descripcion:
+      p.Descripcion ??
+      p.Descripción ??
+      p.descripcion ??
+      "",
+    precio: formatearPrecio(p.Precio ?? p.precio, mostrarPrecio),
+    img: imagen,
+    badge:
+      p.Badge ??
+      p.badge ??
+      (destacado ? "Destacado" : ""),
+    activo: productoActivo(p)
+  };
+}
+
+async function cargarProductos(){
+  grid.innerHTML = `
+    <div class="catalogo-vacio">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <h3>Cargando productos</h3>
+      <p>Un momento...</p>
+    </div>
+  `;
+
+  try{
+    const snap = await getDocs(collection(db, "Productos"));
+
+    productos = snap.docs
+      .map(mapearProducto)
+      .filter(p => p.activo)
+      .sort((a,b) => a.nombre.localeCompare(b.nombre, "es"));
+
+    aplicarCategoriaURL();
+    renderProductos();
+    actualizarBarraSeleccion();
+
+  }catch(error){
+    console.error("Error cargando productos desde Firestore:", error);
+
+    grid.innerHTML = `
+      <div class="catalogo-vacio">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>No pudimos cargar el catálogo</h3>
+        <p>Revisá la conexión con Firebase y las reglas de Firestore.</p>
+      </div>
+    `;
+
+    contador.textContent = "0";
+  }
+}
+
+function aplicarCategoriaURL(){
+  const categoriaURL = normalizarCategoria(
+    new URLSearchParams(window.location.search).get("cat") || ""
+  );
+
+  const categoriasValidas = [
+    "remeras",
+    "camisetas",
+    "shorts",
+    "gorras",
+    "accesorios"
+  ];
+
+  if(categoriaURL && categoriasValidas.includes(categoriaURL)){
+    filtroCategoria = categoriaURL;
+
+    document.querySelectorAll(".filtro-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.cat === categoriaURL);
+    });
+  }
+}
+
+function productosFiltrados(){
+  const q = busqueda.trim().toLowerCase();
+
+  return productos.filter(p => {
+    const matchCat =
+      filtroCategoria === "todos" ||
+      p.categoria === filtroCategoria;
+
+    const texto =
+      `${p.nombre} ${p.categoria} ${p.descripcion}`.toLowerCase();
+
+    const matchBusqueda =
+      !q || texto.includes(q);
+
+    return matchCat && matchBusqueda;
+  });
+}
+
+function renderProductos(){
+  const filtrados = productosFiltrados();
+  contador.textContent = filtrados.length;
+
+  const totalPaginas = Math.max(1, Math.ceil(filtrados.length / POR_PAGINA));
+
+  if(paginaActual > totalPaginas){
+    paginaActual = totalPaginas;
+  }
+
+  const inicio = (paginaActual - 1) * POR_PAGINA;
+  const visibles = filtrados.slice(inicio, inicio + POR_PAGINA);
+
+  if(!visibles.length){
+    grid.innerHTML = `
+      <div class="catalogo-vacio">
+        <i class="fa-regular fa-face-meh"></i>
+        <h3>No encontramos productos</h3>
+        <p>Probá con otra categoría o búsqueda.</p>
+      </div>
+    `;
+
+    renderPaginacion(0,1,0,0);
+    return;
+  }
+
+  grid.innerHTML = visibles.map(p => {
+    const seleccionado = seleccionados.has(p.id);
+    const mensaje = `Hola TITO, quiero consultar por: ${p.nombre}.`;
+
+    return `
+      <article class="prod-card ${seleccionado ? "seleccionado" : ""}" data-id="${escaparHTML(p.id)}">
+
+        <div class="prod-check" aria-hidden="true">
+          <i class="fa-solid fa-check"></i>
+        </div>
+
+        ${p.badge ? `<div class="prod-badge">${escaparHTML(p.badge)}</div>` : ""}
+
+        <a
+          class="prod-img"
+          href="producto.html?id=${encodeURIComponent(p.id)}"
+          onclick="event.stopPropagation()"
+          aria-label="Ver ${escaparHTML(p.nombre)}"
+        >
+          ${
+            p.img
+              ? `<img
+                  src="${escaparHTML(p.img)}"
+                  alt="${escaparHTML(p.nombre)}"
+                  loading="lazy"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                >`
+              : ""
+          }
+
+          <div class="prod-img-fallback" style="${p.img ? "" : "display:flex;"}">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+        </a>
+
+        <div class="prod-body">
+
+          <div class="prod-cat">
+            ${escaparHTML(nombreCategoria(p.categoria))}
+          </div>
+
+          <h3>
+            <a
+              href="producto.html?id=${encodeURIComponent(p.id)}"
+              onclick="event.stopPropagation()"
+              style="text-decoration:none;color:inherit;"
+            >
+              ${escaparHTML(p.nombre)}
+            </a>
+          </h3>
+
+          <p>${escaparHTML(p.descripcion)}</p>
+
+          <div class="prod-footer">
+
+            <div class="prod-precio ${p.precio === "Consultar" ? "consultar" : ""}">
+              ${escaparHTML(p.precio)}
+            </div>
+
+            <a
+              class="prod-wpp"
+              href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Consultar ${escaparHTML(p.nombre)} por WhatsApp"
+              onclick="event.stopPropagation()"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  document.querySelectorAll(".prod-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.dataset.id;
+
+      if(seleccionados.has(id)){
+        seleccionados.delete(id);
+      }else{
+        seleccionados.add(id);
+      }
+
+      actualizarBarraSeleccion();
+      renderProductos();
+    });
+  });
+
+  renderPaginacion(
+    filtrados.length,
+    totalPaginas,
+    inicio,
+    inicio + visibles.length
+  );
+}
+
+function renderPaginacion(total,totalPaginas,inicio,fin){
+  if(total <= POR_PAGINA){
+    paginacion.innerHTML = "";
+    return;
+  }
+
+  let html = `
+    <button
+      class="pag-btn"
+      ${paginaActual === 1 ? "disabled" : ""}
+      data-pag="${paginaActual - 1}"
+    >
+      ‹
+    </button>
+  `;
+
+  for(let i=1;i<=totalPaginas;i++){
+    html += `
+      <button
+        class="pag-btn ${i === paginaActual ? "active" : ""}"
+        data-pag="${i}"
+      >
+        ${i}
+      </button>
+    `;
+  }
+
+  html += `
+    <button
+      class="pag-btn"
+      ${paginaActual === totalPaginas ? "disabled" : ""}
+      data-pag="${paginaActual + 1}"
+    >
+      ›
+    </button>
+
+    <div class="pag-info">
+      Mostrando ${inicio + 1}-${fin} de ${total} productos
+    </div>
+  `;
+
+  paginacion.innerHTML = html;
+
+  paginacion
+    .querySelectorAll(".pag-btn:not(:disabled)")
+    .forEach(btn => {
+      btn.addEventListener("click",() => {
+        paginaActual = Number(btn.dataset.pag);
+        renderProductos();
+
+        window.scrollTo({
+          top:document.querySelector(".catalogo-toolbar").offsetTop,
+          behavior:"smooth"
+        });
+      });
+    });
+}
+
+function actualizarBarraSeleccion(){
+  cantSel.textContent = seleccionados.size;
+
+  barraSeleccion.classList.toggle(
+    "visible",
+    seleccionados.size > 0
+  );
+
+  const elegidos =
+    productos.filter(p => seleccionados.has(p.id));
+
+  if(elegidos.length){
+    const lista =
+      elegidos.map(p => `• ${p.nombre}`).join("\n");
+
+    const mensaje =
+      `Hola TITO, quiero consultar por estos productos:\n${lista}`;
+
+    btnConsultarSel.href =
+      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+
+  }else{
+    btnConsultarSel.href = "#";
+  }
+}
+
+document.getElementById("buscador").addEventListener("input",e => {
+  busqueda = e.target.value;
+  paginaActual = 1;
+  renderProductos();
+});
+
+document.querySelectorAll(".filtro-btn").forEach(btn => {
+  btn.addEventListener("click",() => {
+    document
+      .querySelectorAll(".filtro-btn")
+      .forEach(b => b.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    filtroCategoria = btn.dataset.cat;
+    paginaActual = 1;
+
+    renderProductos();
+  });
+});
+
+document.getElementById("btn-limpiar").addEventListener("click",() => {
+  seleccionados.clear();
+  actualizarBarraSeleccion();
+  renderProductos();
+});
+
+/* Menú móvil */
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+const menuIcon = menuBtn.querySelector("i");
+
+menuBtn.addEventListener("click",() => {
+  const abierto = nav.classList.toggle("active");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    abierto ? "true" : "false"
+  );
+
+  menuIcon.classList.toggle("fa-bars",!abierto);
+  menuIcon.classList.toggle("fa-xmark",abierto);
+});
+
+nav.querySelectorAll("a").forEach(a => {
+  a.addEventListener("click",() => {
+    nav.classList.remove("active");
+    menuBtn.setAttribute("aria-expanded","false");
+    menuIcon.classList.add("fa-bars");
+    menuIcon.classList.remove("fa-xmark");
+  });
+});
+
+cargarProductos();
+</script>
+
+</body>
+</html>
